@@ -24,7 +24,7 @@ jobs:
 
       - name: Avvia gli scraper di tutti i negozi
         run: |
-          node lidl_scraper.js
+          node scraper_lidl.js
           node scraper_conad.js
           node scraper_esselunga.js
           # Qui in futuro aggiungeremo: node scraper_conad.js, node scraper_esselunga.js, ecc.

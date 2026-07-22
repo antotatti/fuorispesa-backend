@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Clona il magazzino
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Prepara Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18' # La versione del motore server
+          node-version: '20' # La versione del motore server
 
       - name: Installa le librerie
         run: npm install

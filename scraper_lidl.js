@@ -64,6 +64,14 @@ async function avviaScraper() {
         const $ = cheerio.load(data);
         let prodottiEstratti = [];
 
+        // === 1. ESTRAZIONE AUTOMATICA DEL PERIODO DALLA PAGINA ===
+        // Cerca il titolo principale o l'intestazione del volantino sul sito Lidl
+        let periodoVolantino = $('h1, .ACampaignHeader__Title, .campaign-header, title').first().text().trim();
+        // Se trova un testo troppo lungo o vuoto, diamo un'etichetta di riserva pulita
+        if (!periodoVolantino || periodoVolantino.length > 50) {
+            periodoVolantino = "Offerte Attive";
+        }
+
         $('.ACampaignGrid__item, .AProductGridbox__GridTilePlaceholder').each((index, element) => {
             try {
                 const rawData = $(element).attr('data-grid-data');
@@ -100,6 +108,8 @@ async function avviaScraper() {
                         id: `${NEGOZIO_ID}_${new Date().toISOString().split('T')[0]}_${index}`,
                         nome: nome,
                         categoria: "Da catalogare",
+                        negozio: "Lidl", // <-- AGGIUNTO PER SICUREZZA
+                        periodo: periodoVolantino, // <-- 2. INSERISCE AUTOMATICAMENTE LA DATA/TITOLO TROVATO SUL SITO
                         immagine_url: immagine_url,
                         prezzo_originale: prezzo_originale,
                         prezzo_scontato: prezzo_scontato,
@@ -122,7 +132,7 @@ async function avviaScraper() {
 
         const jsonFinale = {
             negozio: { id: NEGOZIO_ID, nome: "Lidl", colore_brand: "#0050AA" },
-            volantino: { data_inizio: new Date().toISOString().split('T')[0] },
+            volantino: { data_inizio: new Date().toISOString().split('T')[0], periodo: periodoVolantino },
             prodotti: prodottiEstratti
         };
 

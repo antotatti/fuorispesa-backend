@@ -9,6 +9,8 @@ on:
 jobs:
   aggiorna-offerte:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # <-- QUESTA RIGA DA' I PERMESSI DI SCRITTURA
 
     steps:
       - name: Clona il magazzino

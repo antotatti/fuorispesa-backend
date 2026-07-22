@@ -34,5 +34,7 @@ jobs:
           git config --global user.name 'GitHub Action Bot'
           git config --global user.email 'action@github.com'
           git add *.json
-          # Se ci sono modifiche, salva e carica, altrimenti non fare nulla
+          # Se non ci sono modifiche, evita di andare in errore (codice 128)
           git diff --quiet && git diff --staged --quiet || (git commit -m "Aggiornamento offerte automatico" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,19 +1,21 @@
 {
-  "negozio": "Esselunga",
-  "data_estrazione": "2026-07-22",
+  "negozio": {
+    "id": "esselunga_italia",
+    "nome": "Esselunga",
+    "colore_brand": "#990000"
+  },
+  "volantino": {
+    "data_inizio": "2026-07-23",
+    "periodo": "VOLANTINI E ALTRE PROMOZIONI"
+  },
   "prodotti": [
     {
-      "id": "esse_1",
-      "nome": "Gocciole Pavesi",
-      "prezzo_scontato": 1.89,
-      "prezzo_originale": 2.59,
-      "prezzo_unita_misura": "500 g",
-      "percentuale_sconto": 27,
-      "categoria": "Colazione",
-      "immagine_url": "https://via.placeholder.com/150/FFD700/000000?text=Gocciole",
-      "testo_disponibilita": "dal 24.07. al 30.07.",
-      "data_inizio": "2026-07-24T08:00:00",
-      "data_fine": "2026-07-30T20:00:00"
+      "id": "esse_default_1",
+      "nome": "Prodotto in arrivo da volantino Esselunga",
+      "prezzo_scontato": "1.00",
+      "negozio": "Esselunga",
+      "periodo": "VOLANTINI E ALTRE PROMOZIONI",
+      "immagine_url": ""
     }
   ]
 }

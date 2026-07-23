@@ -1,19 +1,26 @@
 {
-  "negozio": "Conad",
-  "data_estrazione": "2026-07-22",
+  "negozio": {
+    "id": "conad_italia",
+    "nome": "Conad",
+    "colore_brand": "#E3000F"
+  },
+  "volantino": {
+    "data_inizio": "2026-07-23",
+    "periodo": "Offerte Attive"
+  },
   "prodotti": [
     {
-      "id": "conad_1",
-      "nome": "Passata di Pomodoro Mutti",
-      "prezzo_scontato": 0.99,
-      "prezzo_originale": 1.45,
-      "prezzo_unita_misura": "700 g",
-      "percentuale_sconto": 31,
+      "id": "conad_default_1",
+      "nome": "Prodotto in arrivo da volantino Conad",
+      "prezzo_scontato": 1,
+      "prezzo_originale": 1.5,
+      "prezzo_unita_misura": "Pezzo",
+      "percentuale_sconto": 20,
       "categoria": "Dispensa",
-      "immagine_url": "https://via.placeholder.com/150/E3000F/FFFFFF?text=Mutti",
-      "testo_disponibilita": "dal 25.07. al 31.07.",
-      "data_inizio": "2026-07-25T08:00:00",
-      "data_fine": "2026-07-31T20:00:00"
+      "negozio": "Conad",
+      "periodo": "Offerte in corso",
+      "immagine_url": "https://via.placeholder.com/150/E3000F/FFFFFF?text=Conad",
+      "bollino_scorta": false
     }
   ]
 }

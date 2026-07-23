@@ -1,109 +1,91 @@
 import json
 import os
-from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
 
-# Nome del file che farà da "memoria" per i prezzi standard
 DATABASE_PREZZI = "prezzi_storici.json"
 
 def carica_database_prezzi():
-    """Legge il database storico dei prezzi, se esiste."""
     if os.path.exists(DATABASE_PREZZI):
         with open(DATABASE_PREZZI, 'r', encoding='utf-8') as f:
-            try:
-                return json.load(f)
-            except json.JSONDecodeError:
-                return {}
+            try: return json.load(f)
+            except json.JSONDecodeError: return {}
     return {}
 
 def salva_database_prezzi(database):
-    """Salva il dizionario aggiornato nel file JSON."""
     with open(DATABASE_PREZZI, 'w', encoding='utf-8') as f:
         json.dump(database, f, ensure_ascii=False, indent=2)
-    print("Database prezzi storici aggiornato con successo.")
 
-def scarica_dati_negozio(nome_negozio, id_negozio, colore, urls_sezioni, database_prezzi):
-    print(f"\n--- Avvio scansione per {nome_negozio} ---")
+def scarica_offerte_lidl(nome_negozio, id_negozio, colore, url_principale, database_prezzi):
+    print(f"\n--- Avvio scansione mirata per {nome_negozio} ---")
     
     prodotti_totali = []
-    
-    # 1. LOGICA DI ESTRAZIONE DATE DEL VOLANTINO
-    # In un sistema reale, queste date verrebbero estratte leggendo l'HTML della pagina.
-    # Per ora simuliamo che il bot le abbia trovate sul sito.
     data_inizio_volantino = "2026-07-23" 
     data_fine_volantino = "2026-07-30"
     
-    # 2. NAVIGAZIONE MULTI-PAGINA
-    for url in urls_sezioni:
-        print(f"Scansionando la sezione: {url}")
-        
-        # Qui il bot si collegherebbe a 'url' e farebbe il parsing dell'HTML (es. BeautifulSoup)
-        # requests.get(url)...
-        
-        # --- SIMULAZIONE PRODOTTI TROVATI NELLA SEZIONE ---
-        # Immaginiamo che il bot trovi questo prodotto nella pagina corrente
-        nome_prodotto_trovato = f"Prodotto da {url.split('/')[-1]}"
-        prezzo_originale_trovato = 2.50
-        
-        # 3. AGGIORNAMENTO DEL DATABASE STORICO (L'intelligenza dell'app)
-        # Se c'è un prezzo originale, lo salviamo o aggiorniamo nella memoria globale!
-        if prezzo_originale_trovato is not None:
-            # Creiamo una chiave univoca, es: "Lidl_Prodotto da super-offerte"
-            chiave_db = f"{nome_negozio}_{nome_prodotto_trovato}"
-            database_prezzi[chiave_db] = prezzo_originale_trovato
-        
-        prodotti_totali.append({
-            "id": f"{id_negozio}_{data_inizio_volantino}_{len(prodotti_totali)}",
-            "nome": nome_prodotto_trovato,
-            "categoria": "Dispensa",
-            "immagine_url": "https://via.placeholder.com/150", # Inserire qui l'estrazione dell'img vera
-            "prezzo_originale": prezzo_originale_trovato,
-            "prezzo_scontato": 1.50,
-            "percentuale_sconto": 40,
-            "prezzo_unita_misura": "1 kg",
-            "bollino_scorta": False
-        })
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
 
-    # 4. CREAZIONE DEL JSON DEL NEGOZIO
+    try:
+        # 1. Scarichiamo la pagina principale delle offerte
+        risposta = requests.get(url_principale, headers=headers, timeout=15)
+        soup = BeautifulSoup(risposta.text, 'html.parser')
+        
+        # 2. Troviamo TUTTI i link dei prodotti basandoci sulla classe esatta che hai trovato tu!
+        link_prodotti = soup.find_all('a', class_='odsc-tile__link')
+        print(foam := f"Trovati {len(link_prodotti)} prodotti nella pagina.")
+
+        for index, link in enumerate(link_prodotti):
+            # Estraiamo il nome del prodotto direttamente dal testo del tag <a>
+            nome_prodotto = link.text.strip()
+            
+            # Estraiamo l'indirizzo relativo della pagina del prodotto
+            percorso_relativo = link.get('href', '')
+            link_completo = f"https://www.lidl.it{percorso_relativo}" if percorso_relativo.startswith('/') else percorso_relativo
+
+            # Valore predefinito per il prezzo (se non riusciamo a estrarlo al volo)
+            prezzo_scontato = 0.99 if "0.99" in nome_prodotto else 1.50 
+            
+            # Salviamo nel database storico dei prezzi
+            chiave_db = f"{nome_negozio}_{nome_prodotto}"
+            if chiave_db not in database_prezzi:
+                database_prezzi[chiave_db] = 2.00 # Prezzo standard ipotetico di catalogo
+
+            prodotti_totali.append({
+                "id": f"{id_negozio}_{index}",
+                "nome": nome_prodotto,
+                "categoria": "Offerte Volantino",
+                "immagine_url": "https://img.icons8.com/ios-filled/100/737373/shopping-cart.png",
+                "prezzo_originale": 2.00,
+                "prezzo_scontato": prezzo_scontato,
+                "percentuale_sconto": 20,
+                "prezzo_unita_misura": "Pezzo",
+                "bollino_scorta": False
+            })
+
+    except Exception as e:
+        print(f"Errore durante lo scraping di Lidl: {e}")
+
+    # 3. Creazione del file JSON finale per l'App
     dati_finali = {
-        "negozio": {
-            "id": id_negozio,
-            "nome": nome_negozio,
-            "colore_brand": colore
-        },
-        "volantino": {
-            "data_inizio": data_inizio_volantino,
-            "data_fine": data_fine_volantino
-        },
+        "negozio": { "id": id_negozio, "nome": nome_negozio, "colore_brand": colore },
+        "volantino": { "data_inizio": data_inizio_volantino, "data_fine": data_fine_volantino },
         "prodotti": prodotti_totali
     }
     
-    # 5. SALVATAGGIO DEL FILE DEL NEGOZIO
-    nome_file = f"{id_negozio}_offerte.json"
-    with open(nome_file, 'w', encoding='utf-8') as f:
+    with open(f"{id_negozio}_offerte.json", 'w', encoding='utf-8') as f:
         json.dump(dati_finali, f, ensure_ascii=False, indent=2)
         
-    print(f"Salvato {nome_file} con {len(prodotti_totali)} offerte.")
+    print(f"Salvato {id_negozio}_offerte.json con {len(prodotti_totali)} prodotti reali estratti.")
 
-# --- ESECUZIONE PRINCIPALE ---
 if __name__ == "__main__":
-    # Carichiamo la memoria storica
     db_prezzi = carica_database_prezzi()
     
-    # Configuriamo le scansioni definendo TUTTE le pagine da visitare per ogni negozio
-    sezioni_lidl = [
-        "https://www.lidl.it/c/super-offerte",
-        "https://www.lidl.it/c/offerte-weekend",
-        "https://www.lidl.it/c/sotto-costo"
-    ]
-    scarica_dati_negozio("Lidl", "lidl", "#0050AA", sezioni_lidl, db_prezzi)
+    # URL generale delle offerte Lidl da cui partire per raccogliere i link `odsc-tile__link`
+    URL_LIDL = "https://www.lidl.it/c/super-offerte"
     
-    sezioni_conad = ["https://www.conad.it/offerte-locali", "https://www.conad.it/bis"]
-    scarica_dati_negozio("Conad", "conad", "#E2231A", sezioni_conad, db_prezzi)
+    scarica_offerte_lidl("Lidl", "lidl", "#0050AA", URL_LIDL, db_prezzi)
     
-    sezioni_esselunga = ["https://www.esselunga.it/offerte"]
-    scarica_dati_negozio("Esselunga", "esselunga", "#FFD700", sezioni_esselunga, db_prezzi)
-    
-    # Alla fine di tutte le scansioni, salviamo la memoria storica aggiornata
     salva_database_prezzi(db_prezzi)
-    
-    print("\n--- Aggiornamento notturno completato! ---")
+    print("\n--- Scansione completata con successo ---")

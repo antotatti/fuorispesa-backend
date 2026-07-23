@@ -1,0 +1,38 @@
+name: Aggiornamento Notturno Volantini
+
+# Quando deve partire questo script?
+on:
+  schedule:
+    # Esegue ogni giorno alle 03:00 del mattino (orario UTC)
+    - cron: '0 3 * * *'
+  # Permette anche di avviarlo manualmente cliccando un bottone su GitHub
+  workflow_dispatch: 
+
+jobs:
+  aggiorna-dati:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Copia la repository
+      uses: actions/checkout@v3
+
+    - name: Prepara Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Installa le librerie
+      run: |
+        pip install -r requirements.txt
+
+    - name: Avvia il Bot Scraper
+      run: |
+        python scraper.py
+
+    - name: Salva i nuovi JSON su GitHub
+      run: |
+        git config --global user.name "Bot FuoriSpesa"
+        git config --global user.email "bot@fuorispesa.local"
+        git add *_offerte.json
+        # Se non ci sono modifiche (es. volantino identico a ieri), non fa nulla e non dà errore
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Aggiornamento automatico offerte" && git push)

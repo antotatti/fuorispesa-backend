@@ -1,25 +1,34 @@
 {
   "negozio": {
-    "id": "conad_italia",
+    "id": "conad",
     "nome": "Conad",
-    "colore_brand": "#E3000F"
+    "colore_brand": "#E2231A"
   },
   "volantino": {
     "data_inizio": "2026-07-23",
-    "periodo": "Offerte Attive"
+    "data_fine": "2026-07-30"
   },
   "prodotti": [
     {
-      "id": "conad_default_1",
-      "nome": "Prodotto in arrivo da volantino Conad",
-      "prezzo_scontato": 1,
-      "prezzo_originale": 1.5,
-      "prezzo_unita_misura": "Pezzo",
-      "percentuale_sconto": 20,
+      "id": "conad_2026-07-23_0",
+      "nome": "Prodotto da offerte-locali",
       "categoria": "Dispensa",
-      "negozio": "Conad",
-      "periodo": "Offerte in corso",
-      "immagine_url": "https://via.placeholder.com/150/E3000F/FFFFFF?text=Conad",
+      "immagine_url": "https://via.placeholder.com/150",
+      "prezzo_originale": 2.5,
+      "prezzo_scontato": 1.5,
+      "percentuale_sconto": 40,
+      "prezzo_unita_misura": "1 kg",
+      "bollino_scorta": false
+    },
+    {
+      "id": "conad_2026-07-23_1",
+      "nome": "Prodotto da bis",
+      "categoria": "Dispensa",
+      "immagine_url": "https://via.placeholder.com/150",
+      "prezzo_originale": 2.5,
+      "prezzo_scontato": 1.5,
+      "percentuale_sconto": 40,
+      "prezzo_unita_misura": "1 kg",
       "bollino_scorta": false
     }
   ]

@@ -10,8 +10,30 @@
   },
   "prodotti": [
     {
+      "id": "lidl_2026-07-23_0",
+      "nome": "Prodotto da super-offerte",
+      "categoria": "Dispensa",
+      "immagine_url": "https://via.placeholder.com/150",
+      "prezzo_originale": 2.5,
+      "prezzo_scontato": 1.5,
+      "percentuale_sconto": 40,
+      "prezzo_unita_misura": "1 kg",
+      "bollino_scorta": false
+    },
+    {
       "id": "lidl_2026-07-23_1",
-      "nome": "Prodotto Offerta Lidl",
+      "nome": "Prodotto da offerte-weekend",
+      "categoria": "Dispensa",
+      "immagine_url": "https://via.placeholder.com/150",
+      "prezzo_originale": 2.5,
+      "prezzo_scontato": 1.5,
+      "percentuale_sconto": 40,
+      "prezzo_unita_misura": "1 kg",
+      "bollino_scorta": false
+    },
+    {
+      "id": "lidl_2026-07-23_2",
+      "nome": "Prodotto da sotto-costo",
       "categoria": "Dispensa",
       "immagine_url": "https://via.placeholder.com/150",
       "prezzo_originale": 2.5,

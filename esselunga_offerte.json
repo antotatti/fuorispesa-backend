@@ -1,24 +1,21 @@
 {
   "negozio": {
-    "id": "esselunga",
+    "id": "esselunga_italia",
     "nome": "Esselunga",
-    "colore_brand": "#FFD700"
+    "colore_brand": "#990000"
   },
   "volantino": {
     "data_inizio": "2026-07-23",
-    "data_fine": "2026-07-30"
+    "periodo": "VOLANTINI E ALTRE PROMOZIONI"
   },
   "prodotti": [
     {
-      "id": "esselunga_2026-07-23_1",
-      "nome": "Prodotto Offerta Esselunga",
-      "categoria": "Dispensa",
-      "immagine_url": "https://via.placeholder.com/150",
-      "prezzo_originale": 2.5,
-      "prezzo_scontato": 1.5,
-      "percentuale_sconto": 40,
-      "prezzo_unita_misura": "1 kg",
-      "bollino_scorta": false
+      "id": "esse_default_1",
+      "nome": "Prodotto in arrivo da volantino Esselunga",
+      "prezzo_scontato": "1.00",
+      "negozio": "Esselunga",
+      "periodo": "VOLANTINI E ALTRE PROMOZIONI",
+      "immagine_url": ""
     }
   ]
 }

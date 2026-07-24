@@ -5,8 +5,178 @@
     "colore_brand": "#0050AA"
   },
   "volantino": {
-    "data_inizio": "2026-07-23",
-    "data_fine": "2026-07-30"
+    "data_inizio": "2026-07-22",
+    "data_fine": "2026-07-29"
   },
-  "prodotti": []
+  "prodotti": [
+    {
+      "id": "lidl_11140037",
+      "nome": "Fettine di lonza di suino",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp6f93929a385b4d1e9f65b6a5f05d7795.png",
+      "prezzo_originale": 3.79,
+      "prezzo_scontato": 2.79,
+      "percentuale_sconto": 26,
+      "prezzo_unita_misura": "1 kg = 6.98 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11145424",
+      "nome": "Toscana IGT rosso",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp26c2c0261f674d3ea9d24e890d547e88.png",
+      "prezzo_originale": 2.39,
+      "prezzo_scontato": 1.79,
+      "percentuale_sconto": 25,
+      "prezzo_unita_misura": "1 l = 2.39 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11150399",
+      "nome": "Ocean Sea Porzioni di filetto di merluzzo d'Alaska",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpc40971869c674c82b5fc85a4b835f890.png",
+      "prezzo_originale": 4.49,
+      "prezzo_scontato": 3.39,
+      "percentuale_sconto": 24,
+      "prezzo_unita_misura": "1 kg = 8.48 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11146436",
+      "nome": "Sfizioso pomodoro mozzarella",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp1bba11a18ba749259100729e5221cc74.png",
+      "prezzo_originale": null,
+      "prezzo_scontato": 0.69,
+      "percentuale_sconto": 0,
+      "prezzo_unita_misura": "1 kg = 5.52 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11149170",
+      "nome": "Latteria Latte parzialmente scremato XXL",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpee1a00909154466d91e187f2443c548c.png",
+      "prezzo_originale": null,
+      "prezzo_scontato": 4.69,
+      "percentuale_sconto": 0,
+      "prezzo_unita_misura": "1 l = da 1.19 a 0.78 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11251798",
+      "nome": "NIXE Tonno all'olio di semi di girasole XXL",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp45c1cb0731f14d46a09988d9ca7db293.png",
+      "prezzo_originale": null,
+      "prezzo_scontato": 3.69,
+      "percentuale_sconto": 0,
+      "prezzo_unita_misura": "1 kg (sgocc.) = da 14.38 a 11.83 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11004221",
+      "nome": "ORLANDO PURE TASTE Paté monoproteico per cani",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp772538f87ea0496898a74a4802775006.png",
+      "prezzo_originale": 0.75,
+      "prezzo_scontato": 0.59,
+      "percentuale_sconto": 21,
+      "prezzo_unita_misura": "1 kg = 3.93 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11144671",
+      "nome": "Profuma bucato",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpc24b8a873c4f416c9d5bba501f7fda56.png",
+      "prezzo_originale": null,
+      "prezzo_scontato": 2.59,
+      "percentuale_sconto": 0,
+      "prezzo_unita_misura": "1 kg = 21.58 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-26",
+      "data_fine": "N/D"
+    },
+    {
+      "id": "lidl_11008335",
+      "nome": "Rasoio",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpf56906b5c20a409ebc62b210ddd408ac.png",
+      "prezzo_originale": 6.99,
+      "prezzo_scontato": 5.49,
+      "percentuale_sconto": 21,
+      "prezzo_unita_misura": "",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11147234",
+      "nome": "Detersivo lavatrice al muschio bianco",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpeb864bf47f5f43888051d7419af950a5.png",
+      "prezzo_originale": 5.99,
+      "prezzo_scontato": 3.99,
+      "percentuale_sconto": 33,
+      "prezzo_unita_misura": "1 l = 1.93 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11007499",
+      "nome": "Coppa del Nonno",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp0a258e92684142d2a56a8820ba1a1e33.png",
+      "prezzo_originale": 3.39,
+      "prezzo_scontato": 2.39,
+      "percentuale_sconto": 29,
+      "prezzo_unita_misura": "1 kg = 9.19 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11009789",
+      "nome": "Alpenfest Gelato variegato",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcp7e676e9f4c4e4ba8aae9dc00b5247117.png",
+      "prezzo_originale": 2.89,
+      "prezzo_scontato": 2.19,
+      "percentuale_sconto": 24,
+      "prezzo_unita_misura": "1 l = 4.25/ 4.20 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    },
+    {
+      "id": "lidl_11008326",
+      "nome": "Gelatelli Stecco gelato al pistacchio",
+      "categoria": "Food",
+      "immagine_url": "https://www.lidl.it/assets/gcpa172de3b39e849b98f81eb704dbd3c91.png",
+      "prezzo_originale": 2.99,
+      "prezzo_scontato": 2.19,
+      "percentuale_sconto": 26,
+      "prezzo_unita_misura": "1 l = 6.84 €",
+      "negozio": "Lidl",
+      "data_inizio": "2026-07-22",
+      "data_fine": "2026-07-29"
+    }
+  ]
 }

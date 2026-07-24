@@ -122,7 +122,7 @@ if __name__ == "__main__":
     db_prezzi = carica_database_prezzi()
     
     # Inserisci qui l'URL della pagina in cui hai catturato il codice (es. /c/super-offerte-kw-30-26/a10099203)
-    URL_LIDL = ""
+    URL_LIDL = "https://www.lidl.it/c/super-offerte-kw-30-26/a10099203"
     
     scarica_offerte_lidl("Lidl", "lidl", "#0050AA", URL_LIDL, db_prezzi)
     

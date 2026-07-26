@@ -1,0 +1,42 @@
+name: Aggiornamento Notturno Offerte
+
+on:
+  schedule:
+    # Esegue ogni giorno alle 02:00 UTC (circa le 04:00 del mattino in Italia)
+    - cron: '0 2 * * *'
+  # Questo comando ci permette di avviare il bot anche manualmente con un bottone dal sito GitHub
+  workflow_dispatch: 
+
+jobs:
+  aggiorna-database:
+    runs-on: ubuntu-latest
+    
+    # Diamo al bot i permessi per poter modificare e salvare i file nel repository
+    permissions:
+      contents: write
+
+    steps:
+    - name: 📥 Scarica il codice del repository
+      uses: actions/checkout@v4
+
+    - name: 🐍 Configura l'ambiente Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: ⚙️ Installa i motori e il browser invisibile (Playwright)
+      run: |
+        python -m pip install --upgrade pip
+        pip install playwright requests beautifulsoup4
+        python -m playwright install chromium
+
+    - name: 🚀 Avvia l'Orchestratore FuoriSpesa
+      run: python orchestratore.py
+
+    - name: 💾 Salva le nuove offerte e mandale all'App
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "Il Bot di FuoriSpesa"
+        git add lidl_offerte.json
+        # Controlla se ci sono nuove offerte, e in caso affermativo aggiorna il file online
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Aggiornamento automatico offerte notturne" && git push)

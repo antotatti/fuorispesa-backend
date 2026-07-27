@@ -45,6 +45,13 @@ jobs:
       
     - name: 🛒 Esegui Spider Coop
       run: python scraper_coop.py
+      
+    # --- NUOVI BOT FASE 3 ---
+    - name: 🛒 Esegui Spider Esselunga
+      run: python scraper_esselunga.py
+
+    - name: 🛒 Esegui Spider Conad
+      run: python scraper_conad.py
 
     - name: 💾 Salva le nuove offerte e mandale all'App
       run: |
@@ -54,3 +61,4 @@ jobs:
         git add *.json
         # Controlla se ci sono nuove offerte, e in caso affermativo aggiorna i file online
         git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Aggiornamento automatico offerte" && git push)
+

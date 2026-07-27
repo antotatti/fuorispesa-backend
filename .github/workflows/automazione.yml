@@ -34,9 +34,10 @@ jobs:
       run: python scraper_lidl.py
       
     - name: 🛒 Esegui Spider Eurospin
-      # Rimuovi il # dalla riga sotto quando avrai creato anche il file scraper_eurospin.py
-      # run: python scraper_eurospin.py
-      run: echo "Spider Eurospin in attesa di creazione..."
+      run: python scraper_eurospin.py
+      
+    - name: 🛒 Esegui Spider MD
+      run: python scraper_md.py
 
     - name: 💾 Salva le nuove offerte e mandale all'App
       run: |

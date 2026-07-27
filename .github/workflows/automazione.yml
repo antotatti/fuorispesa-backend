@@ -30,13 +30,19 @@ jobs:
         pip install playwright requests beautifulsoup4
         python -m playwright install chromium
 
-    - name: 🚀 Avvia l'Orchestratore FuoriSpesa
-      run: python orchestratore.py
+    - name: 🛒 Esegui Spider Lidl
+      run: python scraper_lidl.py
+      
+    - name: 🛒 Esegui Spider Eurospin
+      # Rimuovi il # dalla riga sotto quando avrai creato anche il file scraper_eurospin.py
+      # run: python scraper_eurospin.py
+      run: echo "Spider Eurospin in attesa di creazione..."
 
     - name: 💾 Salva le nuove offerte e mandale all'App
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "Il Bot di FuoriSpesa"
-        git add lidl_offerte.json
-        # Controlla se ci sono nuove offerte, e in caso affermativo aggiorna il file online
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Aggiornamento automatico offerte notturne" && git push)
+        # Aggiunge tutti i file JSON generati dai vari bot
+        git add *.json
+        # Controlla se ci sono nuove offerte, e in caso affermativo aggiorna i file online
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Aggiornamento automatico offerte" && git push)

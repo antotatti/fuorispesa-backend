@@ -52,7 +52,7 @@ async def scrape_esselunga_definitivo():
     print("="*50)
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(headless=True, slow_mo=50)
         # Usiamo un User-Agent reale per non sembrare un bot
         context = await browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",

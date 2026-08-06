@@ -6,7 +6,7 @@
     },
     "prodotti": [
         {
-            "id": "e29b6446",
+            "id": "36c9afcb",
             "nome": "Lec Swirly Pistachi-Oh! 268 g",
             "prezzo_scontato": "4.99",
             "prezzo_originale": null,
@@ -19,7 +19,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "89483c34",
+            "id": "664e58cd",
             "nome": "Lec Why Nut? 273 g",
             "prezzo_scontato": "4.99",
             "prezzo_originale": null,
@@ -32,7 +32,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "5fb47f60",
+            "id": "e63b8cc5",
             "nome": "Fiorentini Choco Si Fondente 2 x 13 g",
             "prezzo_scontato": "1.10",
             "prezzo_originale": null,
@@ -45,7 +45,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "1a6f1fbb",
+            "id": "fe995f27",
             "nome": "Pringles Minis Original 6 x 20 g",
             "prezzo_scontato": "2.69",
             "prezzo_originale": null,
@@ -58,7 +58,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "0d1586ae",
+            "id": "245b6648",
             "nome": "Pringles Paprika 70 g",
             "prezzo_scontato": "1.44",
             "prezzo_originale": null,
@@ -71,7 +71,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "e0697bea",
+            "id": "0bc62d89",
             "nome": "Kettle Cooked Chips Jalapeños 150 g",
             "prezzo_scontato": "1.99",
             "prezzo_originale": null,
@@ -84,7 +84,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "680f9e67",
+            "id": "69f86324",
             "nome": "Kettle Cooked Chips Paprika 150 g",
             "prezzo_scontato": "1.99",
             "prezzo_originale": null,
@@ -97,7 +97,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "69146b03",
+            "id": "3b09996c",
             "nome": "Gran Cereale Biscotti con Mandorla Salata e Cioccolato Fondente 100% I",
             "prezzo_scontato": "2.49",
             "prezzo_originale": null,
@@ -110,7 +110,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "2d9c5bca",
+            "id": "5ead3bd8",
             "nome": "Gran Cereale Biscotti con Nocciola Caramellata e Cioccolato Fondente 1",
             "prezzo_scontato": "2.49",
             "prezzo_originale": null,
@@ -123,7 +123,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "8c51d1f0",
+            "id": "afc9d1bb",
             "nome": "Dietorelle Zero Zucchero Caramella Gommosa Fragola 70 g",
             "prezzo_scontato": "1.89",
             "prezzo_originale": null,
@@ -136,7 +136,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "17a6d73a",
+            "id": "1eb5fe87",
             "nome": "Haribo Orsetti d'Oro 175 g",
             "prezzo_scontato": "1.49",
             "prezzo_originale": null,
@@ -149,7 +149,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "f832eedf",
+            "id": "d2ee4ec8",
             "nome": "Haribo Happy Cola 175 g",
             "prezzo_scontato": "1.49",
             "prezzo_originale": null,
@@ -162,7 +162,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "83d21aa1",
+            "id": "b7960ad0",
             "nome": "Chupa Chups Mads Gusto Tutti Frutti 115 g",
             "prezzo_scontato": "2.19",
             "prezzo_originale": null,
@@ -175,7 +175,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "77175f83",
+            "id": "b2c20bb9",
             "nome": "Chupa Chups Mads Gusto Frutti di Bosco 115 g",
             "prezzo_scontato": "2.19",
             "prezzo_originale": null,
@@ -188,7 +188,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "6edf3a12",
+            "id": "179dee9c",
             "nome": "Haribo Cocobat 175 g",
             "prezzo_scontato": "1.49",
             "prezzo_originale": null,
@@ -201,7 +201,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "facec9b2",
+            "id": "f4ea1f44",
             "nome": "Melone Mantovano IGP ",
             "prezzo_scontato": "2.55",
             "prezzo_originale": null,
@@ -214,7 +214,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "76e252de",
+            "id": "e329dd55",
             "nome": "Burro formato contadino 250 g",
             "prezzo_scontato": "3.79",
             "prezzo_originale": null,
@@ -227,7 +227,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "0792a0f3",
+            "id": "0f0c6a60",
             "nome": "De Cecco Olio Extra Vergine di Oliva Classico 1 L",
             "prezzo_scontato": "11.90",
             "prezzo_originale": null,
@@ -240,7 +240,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "535a65ab",
+            "id": "86085e37",
             "nome": "Mutti Polpa di Pomodoro 3 x 400 g",
             "prezzo_scontato": "3.59",
             "prezzo_originale": null,
@@ -253,7 +253,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "3a1a74c9",
+            "id": "f4e75fba",
             "nome": "Esselunga filetto di salmone",
             "prezzo_scontato": "29.85",
             "prezzo_originale": null,
@@ -266,7 +266,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "9f1e139c",
+            "id": "7f7f46ef",
             "nome": "Esselunga Naturama Hamburger scottona bovino adulto classici 250 g",
             "prezzo_scontato": "5.82",
             "prezzo_originale": null,
@@ -279,7 +279,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "04213537",
+            "id": "7335f855",
             "nome": "Esselunga Ceci 3 x 380 g",
             "prezzo_scontato": "1.85",
             "prezzo_originale": null,
@@ -292,7 +292,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "ae6c0d2e",
+            "id": "a0c1da8c",
             "nome": "Granarolo Mozzarella Fresca 4 x 100 g",
             "prezzo_scontato": "4.58",
             "prezzo_originale": null,
@@ -305,7 +305,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "70090d32",
+            "id": "7420e559",
             "nome": "Esselunga Naturama Bis julienne 300 g",
             "prezzo_scontato": "1.98",
             "prezzo_originale": null,
@@ -318,7 +318,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "9ad2e4dd",
+            "id": "16d79c71",
             "nome": "Gran Biscotto Selezione oro ",
             "prezzo_scontato": "31.90",
             "prezzo_originale": null,
@@ -331,7 +331,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "4922359e",
+            "id": "09d6ecce",
             "nome": "Esselunga suino fettine di lonza (arista) disossata confezione risparm",
             "prezzo_scontato": "10.32",
             "prezzo_originale": null,
@@ -344,7 +344,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "880c7b34",
+            "id": "8f4b2881",
             "nome": "Esselunga Naturama Polpa trita scelta scottona bovino adulto 400 g",
             "prezzo_scontato": "8.65",
             "prezzo_originale": null,
@@ -357,7 +357,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "4149db0c",
+            "id": "36f1306b",
             "nome": "Esselunga Naturama mini filetti di pollo allevato senza uso di antibio",
             "prezzo_scontato": "16.57",
             "prezzo_originale": null,
@@ -370,7 +370,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "2709916f",
+            "id": "317c506a",
             "nome": "Harbour by MOWI Salmone Affumicato Norvegese 150 g",
             "prezzo_scontato": "7.98",
             "prezzo_originale": null,
@@ -383,7 +383,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "e1e893a6",
+            "id": "3903ca9f",
             "nome": "Garofalo Penne Ziti Rigate 70 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "prezzo_originale": null,
@@ -396,7 +396,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "ef06d9b8",
+            "id": "ec5ef196",
             "nome": "Falce e carrello edizione 2024",
             "prezzo_scontato": "18.00",
             "prezzo_originale": null,

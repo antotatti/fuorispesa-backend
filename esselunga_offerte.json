@@ -6,7 +6,7 @@
     },
     "prodotti": [
         {
-            "id": "b1ea0fcf",
+            "id": "e29b6446",
             "nome": "Lec Swirly Pistachi-Oh! 268 g",
             "prezzo_scontato": "4.99",
             "prezzo_originale": null,
@@ -19,7 +19,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "8a634fce",
+            "id": "89483c34",
             "nome": "Lec Why Nut? 273 g",
             "prezzo_scontato": "4.99",
             "prezzo_originale": null,
@@ -32,7 +32,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "5dbf4c5d",
+            "id": "5fb47f60",
             "nome": "Fiorentini Choco Si Fondente 2 x 13 g",
             "prezzo_scontato": "1.10",
             "prezzo_originale": null,
@@ -45,46 +45,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "b1bc4745",
-            "nome": "Pringles Paprika 70 g",
-            "prezzo_scontato": "1.44",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157788.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "57a4a5d2",
-            "nome": "Kettle Cooked Chips Jalapeños 150 g",
-            "prezzo_scontato": "1.99",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157451.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "38a0aaba",
-            "nome": "Kettle Cooked Chips Paprika 150 g",
-            "prezzo_scontato": "1.99",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "b75215c9",
+            "id": "1a6f1fbb",
             "nome": "Pringles Minis Original 6 x 20 g",
             "prezzo_scontato": "2.69",
             "prezzo_originale": null,
@@ -97,7 +58,46 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "63cb5119",
+            "id": "0d1586ae",
+            "nome": "Pringles Paprika 70 g",
+            "prezzo_scontato": "1.44",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157788.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "e0697bea",
+            "nome": "Kettle Cooked Chips Jalapeños 150 g",
+            "prezzo_scontato": "1.99",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157451.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "680f9e67",
+            "nome": "Kettle Cooked Chips Paprika 150 g",
+            "prezzo_scontato": "1.99",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "69146b03",
             "nome": "Gran Cereale Biscotti con Mandorla Salata e Cioccolato Fondente 100% I",
             "prezzo_scontato": "2.49",
             "prezzo_originale": null,
@@ -110,7 +110,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "cda093c0",
+            "id": "2d9c5bca",
             "nome": "Gran Cereale Biscotti con Nocciola Caramellata e Cioccolato Fondente 1",
             "prezzo_scontato": "2.49",
             "prezzo_originale": null,
@@ -123,7 +123,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "08d39f4b",
+            "id": "8c51d1f0",
             "nome": "Dietorelle Zero Zucchero Caramella Gommosa Fragola 70 g",
             "prezzo_scontato": "1.89",
             "prezzo_originale": null,
@@ -136,59 +136,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "539a1cad",
-            "nome": "Haribo Happy Cola 175 g",
-            "prezzo_scontato": "1.49",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251538.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "2a62d33d",
-            "nome": "Haribo Cocobat 175 g",
-            "prezzo_scontato": "1.49",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251519.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "7bae01ea",
-            "nome": "Chupa Chups Mads Gusto Frutti di Bosco 115 g",
-            "prezzo_scontato": "2.19",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251057.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "d0620487",
-            "nome": "Chupa Chups Mads Gusto Tutti Frutti 115 g",
-            "prezzo_scontato": "2.19",
-            "prezzo_originale": null,
-            "prezzo_unita_misura": "",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251056.jpg",
-            "categoria": "Dispensa",
-            "percentuale_sconto": "In Offerta",
-            "data_inizio": "2026-08-06",
-            "data_fine": "N/D",
-            "negozio": "Esselunga"
-        },
-        {
-            "id": "503e20e9",
+            "id": "17a6d73a",
             "nome": "Haribo Orsetti d'Oro 175 g",
             "prezzo_scontato": "1.49",
             "prezzo_originale": null,
@@ -201,7 +149,59 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "5e677592",
+            "id": "f832eedf",
+            "nome": "Haribo Happy Cola 175 g",
+            "prezzo_scontato": "1.49",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251538.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "83d21aa1",
+            "nome": "Chupa Chups Mads Gusto Tutti Frutti 115 g",
+            "prezzo_scontato": "2.19",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251056.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "77175f83",
+            "nome": "Chupa Chups Mads Gusto Frutti di Bosco 115 g",
+            "prezzo_scontato": "2.19",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251057.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "6edf3a12",
+            "nome": "Haribo Cocobat 175 g",
+            "prezzo_scontato": "1.49",
+            "prezzo_originale": null,
+            "prezzo_unita_misura": "",
+            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251519.jpg",
+            "categoria": "Dispensa",
+            "percentuale_sconto": "In Offerta",
+            "data_inizio": "2026-08-06",
+            "data_fine": "N/D",
+            "negozio": "Esselunga"
+        },
+        {
+            "id": "facec9b2",
             "nome": "Melone Mantovano IGP ",
             "prezzo_scontato": "2.55",
             "prezzo_originale": null,
@@ -214,7 +214,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "4952bbb4",
+            "id": "76e252de",
             "nome": "Burro formato contadino 250 g",
             "prezzo_scontato": "3.79",
             "prezzo_originale": null,
@@ -227,7 +227,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "272dec7e",
+            "id": "0792a0f3",
             "nome": "De Cecco Olio Extra Vergine di Oliva Classico 1 L",
             "prezzo_scontato": "11.90",
             "prezzo_originale": null,
@@ -240,7 +240,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "347ec528",
+            "id": "535a65ab",
             "nome": "Mutti Polpa di Pomodoro 3 x 400 g",
             "prezzo_scontato": "3.59",
             "prezzo_originale": null,
@@ -253,7 +253,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "34c47e09",
+            "id": "3a1a74c9",
             "nome": "Esselunga filetto di salmone",
             "prezzo_scontato": "29.85",
             "prezzo_originale": null,
@@ -266,7 +266,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "d20398c5",
+            "id": "9f1e139c",
             "nome": "Esselunga Naturama Hamburger scottona bovino adulto classici 250 g",
             "prezzo_scontato": "5.82",
             "prezzo_originale": null,
@@ -279,7 +279,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "335d2cd8",
+            "id": "04213537",
             "nome": "Esselunga Ceci 3 x 380 g",
             "prezzo_scontato": "1.85",
             "prezzo_originale": null,
@@ -292,7 +292,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "eb7755e6",
+            "id": "ae6c0d2e",
             "nome": "Granarolo Mozzarella Fresca 4 x 100 g",
             "prezzo_scontato": "4.58",
             "prezzo_originale": null,
@@ -305,7 +305,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "143c0087",
+            "id": "70090d32",
             "nome": "Esselunga Naturama Bis julienne 300 g",
             "prezzo_scontato": "1.98",
             "prezzo_originale": null,
@@ -318,7 +318,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "9295d4e4",
+            "id": "9ad2e4dd",
             "nome": "Gran Biscotto Selezione oro ",
             "prezzo_scontato": "31.90",
             "prezzo_originale": null,
@@ -331,7 +331,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "737dec82",
+            "id": "4922359e",
             "nome": "Esselunga suino fettine di lonza (arista) disossata confezione risparm",
             "prezzo_scontato": "10.32",
             "prezzo_originale": null,
@@ -344,7 +344,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "4f1f4b40",
+            "id": "880c7b34",
             "nome": "Esselunga Naturama Polpa trita scelta scottona bovino adulto 400 g",
             "prezzo_scontato": "8.65",
             "prezzo_originale": null,
@@ -357,7 +357,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "9237ceff",
+            "id": "4149db0c",
             "nome": "Esselunga Naturama mini filetti di pollo allevato senza uso di antibio",
             "prezzo_scontato": "16.57",
             "prezzo_originale": null,
@@ -370,7 +370,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "de7095b1",
+            "id": "2709916f",
             "nome": "Harbour by MOWI Salmone Affumicato Norvegese 150 g",
             "prezzo_scontato": "7.98",
             "prezzo_originale": null,
@@ -383,7 +383,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "099c2f4b",
+            "id": "e1e893a6",
             "nome": "Garofalo Penne Ziti Rigate 70 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "prezzo_originale": null,
@@ -396,7 +396,7 @@
             "negozio": "Esselunga"
         },
         {
-            "id": "b5709d6a",
+            "id": "ef06d9b8",
             "nome": "Falce e carrello edizione 2024",
             "prezzo_scontato": "18.00",
             "prezzo_originale": null,

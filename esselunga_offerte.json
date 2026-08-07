@@ -1,12 +1,12 @@
 {
     "metadata": {
-        "data_scansione": "2026-08-07 06:23:14",
+        "data_scansione": "2026-08-07 06:56:31",
         "reparti_trovati": 2,
         "reparti_scansionati_con_successo": 2
     },
     "prodotti": [
         {
-            "id": "5845ca7b",
+            "id": "a1531ce3",
             "nome": "Lec Swirly Pistachi-Oh! 268 g",
             "prezzo_scontato": "4.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608030.jpg",
@@ -101,7 +101,7 @@
             }
         },
         {
-            "id": "36cd10ec",
+            "id": "4543573d",
             "nome": "Lec Why Nut? 273 g",
             "prezzo_scontato": "4.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608104.jpg",
@@ -196,7 +196,7 @@
             }
         },
         {
-            "id": "d293fe63",
+            "id": "22026ed4",
             "nome": "Fiorentini Choco Si Fondente 2 x 13 g",
             "prezzo_scontato": "1.10",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/156450.jpg",
@@ -316,7 +316,7 @@
             }
         },
         {
-            "id": "739da5c9",
+            "id": "15b056a9",
             "nome": "Pringles Minis Original 6 x 20 g",
             "prezzo_scontato": "2.69",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157129.jpg",
@@ -436,7 +436,7 @@
             }
         },
         {
-            "id": "1b1b44a9",
+            "id": "9dad65d9",
             "nome": "Pringles Paprika 70 g",
             "prezzo_scontato": "1.44",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157788.jpg",
@@ -556,7 +556,7 @@
             }
         },
         {
-            "id": "0393a4bf",
+            "id": "781ef468",
             "nome": "Kettle Cooked Chips Jalapeños 150 g",
             "prezzo_scontato": "1.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157451.jpg",
@@ -664,7 +664,7 @@
             }
         },
         {
-            "id": "fb10b633",
+            "id": "2a05a595",
             "nome": "Kettle Cooked Chips Paprika 150 g",
             "prezzo_scontato": "1.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
@@ -772,7 +772,7 @@
             }
         },
         {
-            "id": "113af3f5",
+            "id": "adbb1201",
             "nome": "Gran Cereale Biscotti con Mandorla Salata e Cioccolato Fondente 100% Ingredienti Vegetali 280g",
             "prezzo_scontato": "2.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173034.jpg",
@@ -904,7 +904,7 @@
             }
         },
         {
-            "id": "6be205fe",
+            "id": "f13102c6",
             "nome": "Gran Cereale Biscotti con Nocciola Caramellata e Cioccolato Fondente 100% Ingredienti Vegetali 280g",
             "prezzo_scontato": "2.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173033.jpg",
@@ -1036,7 +1036,7 @@
             }
         },
         {
-            "id": "5ffb6a4d",
+            "id": "3ea0427b",
             "nome": "Haribo Cocobat 175 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251519.jpg",
@@ -1144,7 +1144,7 @@
             }
         },
         {
-            "id": "c89213d3",
+            "id": "c0685d8c",
             "nome": "Fruit-tella Bella Fra 140 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251045.jpg",
@@ -1252,7 +1252,7 @@
             }
         },
         {
-            "id": "845be302",
+            "id": "9039cb24",
             "nome": "Haribo Orsetti d'Oro 175 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251496.jpg",
@@ -1360,7 +1360,7 @@
             }
         },
         {
-            "id": "fd1701fc",
+            "id": "3c6dbccf",
             "nome": "Dietorelle Zero Zucchero Caramella Gommosa Fragola 70 g",
             "prezzo_scontato": "1.89",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251756.jpg",
@@ -1504,7 +1504,7 @@
             }
         },
         {
-            "id": "cb320687",
+            "id": "f2daedb9",
             "nome": "Chupa Chups Mads Gusto Frutti di Bosco 115 g",
             "prezzo_scontato": "2.19",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251057.jpg",
@@ -1612,7 +1612,7 @@
             }
         },
         {
-            "id": "f279ea85",
+            "id": "a5724437",
             "nome": "Haribo Happy Cola 175 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251538.jpg",
@@ -1720,7 +1720,7 @@
             }
         },
         {
-            "id": "fe88fe0f",
+            "id": "94b3db2d",
             "nome": "Melone Mantovano IGP ",
             "prezzo_scontato": "2.55",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/761429.jpg",
@@ -1863,7 +1863,7 @@
             }
         },
         {
-            "id": "d784e4db",
+            "id": "f57d66d4",
             "nome": "Burro formato contadino 250 g",
             "prezzo_scontato": "3.79",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/313056.jpg",
@@ -1980,7 +1980,7 @@
             }
         },
         {
-            "id": "e5c812b8",
+            "id": "77ac0914",
             "nome": "De Cecco Olio Extra Vergine di Oliva Classico 1 L",
             "prezzo_scontato": "11.90",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/351265.jpg",
@@ -2107,7 +2107,7 @@
             }
         },
         {
-            "id": "66949a86",
+            "id": "c4eeec27",
             "nome": "Mutti Polpa di Pomodoro 3 x 400 g",
             "prezzo_scontato": "3.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/411418.jpg",
@@ -2224,7 +2224,7 @@
             }
         },
         {
-            "id": "95a29685",
+            "id": "600fa44d",
             "nome": "Esselunga filetto di salmone",
             "prezzo_scontato": "29.85",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/731228.jpg",
@@ -2355,7 +2355,7 @@
             }
         },
         {
-            "id": "3f41a6d7",
+            "id": "31fd7d39",
             "nome": "Esselunga Naturama Hamburger scottona bovino adulto classici 250 g",
             "prezzo_scontato": "5.82",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/714813.jpg",
@@ -2484,7 +2484,7 @@
             }
         },
         {
-            "id": "c4527ed2",
+            "id": "1993c680",
             "nome": "Esselunga Ceci 3 x 380 g",
             "prezzo_scontato": "1.85",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/412104.jpg",
@@ -2601,7 +2601,7 @@
             }
         },
         {
-            "id": "b21c4fdb",
+            "id": "83608912",
             "nome": "Granarolo Mozzarella Fresca 4 x 100 g",
             "prezzo_scontato": "4.58",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721623.jpg",
@@ -2730,7 +2730,7 @@
             }
         },
         {
-            "id": "13cd7b73",
+            "id": "dd6b6eb5",
             "nome": "Esselunga Naturama Bis julienne 300 g",
             "prezzo_scontato": "1.98",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/755453.jpg",
@@ -2871,7 +2871,7 @@
             }
         },
         {
-            "id": "e924eaaa",
+            "id": "6b285598",
             "nome": "Gran Biscotto Selezione oro ",
             "prezzo_scontato": "31.90",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/737200.jpg",
@@ -3055,7 +3055,7 @@
             }
         },
         {
-            "id": "bba9ed20",
+            "id": "db7af2fb",
             "nome": "Esselunga suino fettine di lonza (arista) disossata confezione risparmio ",
             "prezzo_scontato": "10.32",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/709205.jpg",
@@ -3186,7 +3186,7 @@
             }
         },
         {
-            "id": "8a20662b",
+            "id": "90c2cf9e",
             "nome": "Esselunga Naturama Polpa trita scelta scottona bovino adulto 400 g",
             "prezzo_scontato": "8.65",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/707401.jpg",
@@ -3315,7 +3315,7 @@
             }
         },
         {
-            "id": "48364fb5",
+            "id": "4377677a",
             "nome": "Esselunga Naturama mini filetti di pollo allevato senza uso di antibiotici ",
             "prezzo_scontato": "16.57",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/708070.jpg",
@@ -3470,7 +3470,7 @@
             }
         },
         {
-            "id": "f9335324",
+            "id": "25934e06",
             "nome": "Harbour by MOWI Salmone Affumicato Norvegese 150 g",
             "prezzo_scontato": "7.98",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/321048.jpg",
@@ -3599,7 +3599,7 @@
             }
         },
         {
-            "id": "d814ab53",
+            "id": "45c073be",
             "nome": "Garofalo Penne Ziti Rigate 70 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114128.jpg",
@@ -3728,7 +3728,7 @@
             }
         },
         {
-            "id": "c5b4b66e",
+            "id": "7332156d",
             "nome": "Esselunga Bio Aceto di mele 500 ml",
             "prezzo_scontato": "1.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/357094.jpg",
@@ -3857,7 +3857,7 @@
             }
         },
         {
-            "id": "6c4f0944",
+            "id": "4c61f43e",
             "nome": "Esselunga Bio Patate surgelate 750 g",
             "prezzo_scontato": "2.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/602610.jpg",
@@ -4022,7 +4022,7 @@
             }
         },
         {
-            "id": "efcf5e30",
+            "id": "be6b3edf",
             "nome": "Esselunga Bio Brodo granulare 120 g",
             "prezzo_scontato": "4.45",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/401016.jpg",
@@ -4163,7 +4163,7 @@
             }
         },
         {
-            "id": "01e4b168",
+            "id": "1699f048",
             "nome": "Esselunga Top Tagliatelle sfoglia classica 250 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113720.jpg",
@@ -4312,7 +4312,7 @@
             }
         },
         {
-            "id": "de63c06a",
+            "id": "9aab38ad",
             "nome": "Esselunga Top Ravioli al brasato 250 g",
             "prezzo_scontato": "3.09",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113747.jpg",
@@ -4461,7 +4461,7 @@
             }
         },
         {
-            "id": "3eeb127c",
+            "id": "4ec3ae61",
             "nome": "Esselunga Top Pappardelle sfoglia classica 250 g",
             "prezzo_scontato": "1.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113721.jpg",
@@ -4610,7 +4610,7 @@
             }
         },
         {
-            "id": "c6f265a4",
+            "id": "16d74d18",
             "nome": "Esselunga Top Tortellini alla carne 250 g",
             "prezzo_scontato": "2.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113723.jpg",
@@ -4759,7 +4759,7 @@
             }
         },
         {
-            "id": "12bce2da",
+            "id": "c3aac5ce",
             "nome": "Esselunga Top Tortellini al \"Prosciutto di Parma DOP\" 250 g",
             "prezzo_scontato": "3.29",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113755.jpg",
@@ -4908,7 +4908,7 @@
             }
         },
         {
-            "id": "9f4d006d",
+            "id": "d65bd073",
             "nome": "Esselunga Top Tortelli ricotta di pecora e spinaci 250 g",
             "prezzo_scontato": "2.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113737.jpg",
@@ -5057,7 +5057,7 @@
             }
         },
         {
-            "id": "55452226",
+            "id": "9c7da545",
             "nome": "Esselunga Top Mascarpone 250 g",
             "prezzo_scontato": "2.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721911.jpg",
@@ -5218,7 +5218,7 @@
             }
         },
         {
-            "id": "1a8532fc",
+            "id": "2438cfa1",
             "nome": "Esselunga Top Torta fresca margherita 340 g",
             "prezzo_scontato": "5.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/724073.jpg",
@@ -5419,7 +5419,7 @@
             }
         },
         {
-            "id": "f353bc24",
+            "id": "6533a204",
             "nome": "Esselunga Top Canestrellini 150 g",
             "prezzo_scontato": "3.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/723437.jpg",
@@ -5568,7 +5568,7 @@
             }
         },
         {
-            "id": "0ba405dd",
+            "id": "a5414a61",
             "nome": "Esselunga Top Ricciarelli 120 g",
             "prezzo_scontato": "2.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/723403.jpg",
@@ -5717,7 +5717,7 @@
             }
         },
         {
-            "id": "10422532",
+            "id": "a5bc61db",
             "nome": "Esselunga Equilibrio Gallette di riso senza glutine 150 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/156486.jpg",
@@ -5890,7 +5890,7 @@
             }
         },
         {
-            "id": "8d151469",
+            "id": "94c97958",
             "nome": "Esselunga Equilibrio Piadina fresca di grano a marchio Kamut 3 x 75 g",
             "prezzo_scontato": "3.57",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/726817.jpg",
@@ -6063,7 +6063,7 @@
             }
         },
         {
-            "id": "cc12af24",
+            "id": "3dd53c88",
             "nome": "Esselunga Equilibrio Gelato fior di latte e cacao 500 g",
             "prezzo_scontato": "3.79",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608560.jpg",
@@ -6212,7 +6212,7 @@
             }
         },
         {
-            "id": "416ea58a",
+            "id": "ad961c76",
             "nome": "Esselunga Naturama Maxi hamburger scottona bovino adulto gusto barbecue 220 g",
             "prezzo_scontato": "4.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/714865.jpg",
@@ -6353,7 +6353,7 @@
             }
         },
         {
-            "id": "5b3e5564",
+            "id": "09788d0b",
             "nome": "Esselunga patate gialle 2 kg",
             "prezzo_scontato": "2.98",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/763954.jpg",
@@ -6494,7 +6494,7 @@
             }
         },
         {
-            "id": "967079bd",
+            "id": "345cf851",
             "nome": "Esselunga Pane morbido integrale 400 g",
             "prezzo_scontato": "0.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/154122.jpg",
@@ -6623,7 +6623,7 @@
             }
         },
         {
-            "id": "98a95a38",
+            "id": "d4657984",
             "nome": "Esselunga code di mazzancolle tropicali cotte sgusciate ",
             "prezzo_scontato": "39.43",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/731713.jpg",
@@ -6754,7 +6754,7 @@
             }
         },
         {
-            "id": "75c18125",
+            "id": "016bbb69",
             "nome": "Esselunga filetto di orata ",
             "prezzo_scontato": "33.85",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/731269.jpg",
@@ -6885,7 +6885,7 @@
             }
         },
         {
-            "id": "7edb5607",
+            "id": "316fb954",
             "nome": "Esselunga bovino adulto scamone (bicchiere/pezza) al pepe verde ",
             "prezzo_scontato": "25.43",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/714152.jpg",
@@ -7016,7 +7016,7 @@
             }
         },
         {
-            "id": "a24c4fa1",
+            "id": "c59b289f",
             "nome": "Cucina Esselunga cous cous vegetariano ",
             "prezzo_scontato": "14.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733047.jpg",
@@ -7159,7 +7159,7 @@
             }
         },
         {
-            "id": "2b6f7be5",
+            "id": "9d6b71fa",
             "nome": "Esselunga Sorbetto ananas, limone, mirtillo, arancia, amarena 10 pezzi 650 g",
             "prezzo_scontato": "3.29",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608521.jpg",
@@ -7267,7 +7267,7 @@
             }
         },
         {
-            "id": "79d8985e",
+            "id": "1176c075",
             "nome": "Esselunga Naturama Insalata allegra 200 g",
             "prezzo_scontato": "1.98",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/755394.jpg",
@@ -7408,7 +7408,7 @@
             }
         },
         {
-            "id": "f8bf66a4",
+            "id": "f297baec",
             "nome": "Cucina Esselunga pasta mediterranea ",
             "prezzo_scontato": "14.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733605.jpg",
@@ -7551,7 +7551,7 @@
             }
         },
         {
-            "id": "08512457",
+            "id": "574c5b23",
             "nome": "Esselunga suino salsiccia punta di coltello ",
             "prezzo_scontato": "10.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/709042.jpg",
@@ -7694,7 +7694,7 @@
             }
         },
         {
-            "id": "e0a438f8",
+            "id": "7f1a6632",
             "nome": "Esselunga pollo coscia per griglia ",
             "prezzo_scontato": "7.13",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/714162.jpg",
@@ -7825,7 +7825,7 @@
             }
         },
         {
-            "id": "8eb50499",
+            "id": "50188909",
             "nome": "Esselunga Fagiolini finissimi surgelati 750 g",
             "prezzo_scontato": "2.79",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/602629.jpg",
@@ -7966,7 +7966,7 @@
             }
         },
         {
-            "id": "25f1e624",
+            "id": "9f505ddd",
             "nome": "Cucina Esselunga Lasagne verdi con ragù alla bolognese 500 g",
             "prezzo_scontato": "7.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733189.jpg",
@@ -8095,7 +8095,7 @@
             }
         },
         {
-            "id": "fefa1807",
+            "id": "700cdd58",
             "nome": "Cucina Esselunga insalata di riso vegetariana ",
             "prezzo_scontato": "14.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733004.jpg",
@@ -8238,7 +8238,7 @@
             }
         },
         {
-            "id": "f5fdc005",
+            "id": "13048bfe",
             "nome": "Esselunga Crostata alle albicocche 400 g",
             "prezzo_scontato": "5.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/724003.jpg",
@@ -8355,7 +8355,7 @@
             }
         },
         {
-            "id": "ca290e18",
+            "id": "f9d752a5",
             "nome": "Cucina Esselunga insalata di farro",
             "prezzo_scontato": "14.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733205.jpg",
@@ -8498,7 +8498,7 @@
             }
         },
         {
-            "id": "9f268adf",
+            "id": "a795e5f6",
             "nome": "Esselunga Sushi Sushi take away 260 g",
             "prezzo_scontato": "9.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/712070.jpg",
@@ -8637,7 +8637,7 @@
             }
         },
         {
-            "id": "a9706cda",
+            "id": "40a324db",
             "nome": "Esselunga Muffin al mirtillo 4 x 75 g",
             "prezzo_scontato": "3.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/725046.jpg",
@@ -8754,7 +8754,7 @@
             }
         },
         {
-            "id": "b8351e85",
+            "id": "ef161edf",
             "nome": "Esselunga Bietole erbette a cubetti surgelate 600 g",
             "prezzo_scontato": "1.97",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/602518.jpg",
@@ -8895,7 +8895,7 @@
             }
         },
         {
-            "id": "935fbdbd",
+            "id": "215cbad8",
             "nome": "Esselunga krapfen alla crema 2 pezzi 110 g",
             "prezzo_scontato": "1.85",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/725170.jpg",
@@ -9026,7 +9026,7 @@
             }
         },
         {
-            "id": "667ea06d",
+            "id": "17638067",
             "nome": "Esselunga Gli Sfarinati Tortellini alla ricotta e spinaci",
             "prezzo_scontato": "13.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/729097.jpg",
@@ -9157,7 +9157,7 @@
             }
         },
         {
-            "id": "8b964350",
+            "id": "c53016f3",
             "nome": "Esselunga Dolce savoia ciambella bicolore 500 g",
             "prezzo_scontato": "4.19",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/724002.jpg",
@@ -9274,7 +9274,7 @@
             }
         },
         {
-            "id": "1da7065d",
+            "id": "64a91dca",
             "nome": "Cucina Esselunga Vellutata piselli e menta 400 g",
             "prezzo_scontato": "4.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/733225.jpg",
@@ -9415,7 +9415,7 @@
             }
         },
         {
-            "id": "8d52e727",
+            "id": "f3acec62",
             "nome": "Esselunga croissant salati al farro 4 pezzi",
             "prezzo_scontato": "3.55",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/725138.jpg",
@@ -9546,7 +9546,7 @@
             }
         },
         {
-            "id": "d47c09b4",
+            "id": "44447f8b",
             "nome": "Citterio Tagliofresco Grangusto Prosciutto Cotto di Alta Qualità 110 g",
             "prezzo_scontato": "3.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/770658.jpg",
@@ -9687,7 +9687,7 @@
             }
         },
         {
-            "id": "a2bd6c2a",
+            "id": "bfb0556b",
             "nome": "Citterio Sofficette Petto di Tacchino al Forno 100 g",
             "prezzo_scontato": "3.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/770817.jpg",
@@ -9828,7 +9828,7 @@
             }
         },
         {
-            "id": "5645b380",
+            "id": "32169514",
             "nome": "Fattorie Osella Linea Osella Formaggio Fresco primosale ­190 g",
             "prezzo_scontato": "2.79",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721313.jpg",
@@ -9957,7 +9957,7 @@
             }
         },
         {
-            "id": "dbe3f2fa",
+            "id": "ff3b6723",
             "nome": "Kionas Feta Formaggio D.O.P. 180 g",
             "prezzo_scontato": "3.19",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721799.jpg",
@@ -10086,7 +10086,7 @@
             }
         },
         {
-            "id": "d3d1b77d",
+            "id": "1ff88425",
             "nome": "Giovanni Rana Sfogliavelo Ricotta e Spinaci 250 g",
             "prezzo_scontato": "3.65",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113086.jpg",
@@ -10203,7 +10203,7 @@
             }
         },
         {
-            "id": "f9da19ca",
+            "id": "42007fd7",
             "nome": "Anguria Perla Nera ",
             "prezzo_scontato": "1.65",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/761043.jpg",
@@ -10334,7 +10334,7 @@
             }
         },
         {
-            "id": "ddb919e6",
+            "id": "22350338",
             "nome": "Giovanni Rana Sfogliavelo Prosciutto Crudo 250 g",
             "prezzo_scontato": "3.65",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/113006.jpg",
@@ -10451,7 +10451,7 @@
             }
         },
         {
-            "id": "6d33602b",
+            "id": "051d96ba",
             "nome": "Cirio Olio Extra Vergine di Oliva Classico 1 L",
             "prezzo_scontato": "7.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/351088.jpg",
@@ -10578,7 +10578,7 @@
             }
         },
         {
-            "id": "75a21d65",
+            "id": "809e175d",
             "nome": "Galbani Certosa Crescenza italiana 165 g",
             "prezzo_scontato": "2.29",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721567.jpg",
@@ -10695,7 +10695,7 @@
             }
         },
         {
-            "id": "c70b0179",
+            "id": "5cb04014",
             "nome": "Sant'Anna Naturale Sorgente Rebruant 12 x 0,5 L",
             "prezzo_scontato": "4.20",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/511022.jpg",
@@ -10822,7 +10822,7 @@
             }
         },
         {
-            "id": "4649e0b6",
+            "id": "9acd074e",
             "nome": "FUZE TEA, Tè alla Pesca e Rosa PET 1,25L",
             "prezzo_scontato": "1.64",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/515021.jpg",
@@ -10949,7 +10949,7 @@
             }
         },
         {
-            "id": "851d2bd3",
+            "id": "cdcf1d9b",
             "nome": "Aia Wudy Classico di Pollo e Tacchino 300 g",
             "prezzo_scontato": "2.29",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/772408.jpg",
@@ -11066,7 +11066,7 @@
             }
         },
         {
-            "id": "cacc1fb3",
+            "id": "eacc5f85",
             "nome": "Mulino Bianco Plumcake Classico Merenda con Yogurt Italiano 10 pezzi 330g",
             "prezzo_scontato": "1.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/172019.jpg",
@@ -11183,7 +11183,7 @@
             }
         },
         {
-            "id": "47bb2db9",
+            "id": "a43a91e5",
             "nome": "Koukakis Dairy Farm Authentic Greek Yoghurt 0% Fat 150 g",
             "prezzo_scontato": "1.28",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/310421.jpg",
@@ -11300,7 +11300,7 @@
             }
         },
         {
-            "id": "6557012d",
+            "id": "de6312cd",
             "nome": "Nettarine piatte ondine confezionate 500 g",
             "prezzo_scontato": "2.26",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/761615.jpg",
@@ -11417,7 +11417,7 @@
             }
         },
         {
-            "id": "bb50a1f2",
+            "id": "abf4a8c9",
             "nome": "FUZE TEA, Tè Nero Limone con una nota di Lemongrass PET 1,25L",
             "prezzo_scontato": "1.64",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/515020.jpg",
@@ -11544,7 +11544,7 @@
             }
         },
         {
-            "id": "540d73d8",
+            "id": "2f33479c",
             "nome": "Brioche Pasquier Panini al Latte 8 x 35 g",
             "prezzo_scontato": "1.66",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/172249.jpg",
@@ -11661,7 +11661,7 @@
             }
         },
         {
-            "id": "a5259819",
+            "id": "97bbca14",
             "nome": "MOTTA Coppa del Nonno Classica 6 x 65 g",
             "prezzo_scontato": "4.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608233.jpg",
@@ -11778,7 +11778,7 @@
             }
         },
         {
-            "id": "7ae55936",
+            "id": "822b36a4",
             "nome": "Aia Carne al Fuoco Hamburger Classico con Tacchino con Rosmarino 0,200 kg",
             "prezzo_scontato": "3.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/708889.jpg",
@@ -11895,7 +11895,7 @@
             }
         },
         {
-            "id": "6bfcdb68",
+            "id": "a196f211",
             "nome": "Mulino Bianco Fette Biscottate Integrali Ricche di Fibre 630g",
             "prezzo_scontato": "2.45",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/155100.jpg",
@@ -12024,7 +12024,7 @@
             }
         },
         {
-            "id": "7ab68c69",
+            "id": "097dfaf9",
             "nome": "Neri Olive Nere denocciolate 300 g",
             "prezzo_scontato": "2.65",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/417932.jpg",
@@ -12141,7 +12141,7 @@
             }
         },
         {
-            "id": "f6f308be",
+            "id": "eb942b90",
             "nome": "Sabelli Fior di Latte Mozzarelle 3 x 125 g",
             "prezzo_scontato": "3.29",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721511.jpg",
@@ -12258,7 +12258,7 @@
             }
         },
         {
-            "id": "51c51cb8",
+            "id": "01b0aa18",
             "nome": "Rio mare Insalatissime Insalata di Tonno Messicana con fagioli rossi, mais e peperoni 2 x 160 g",
             "prezzo_scontato": "5.70",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/431114.jpg",
@@ -12387,7 +12387,7 @@
             }
         },
         {
-            "id": "a2dbcc2e",
+            "id": "e6882b4b",
             "nome": "Mulino Bianco Fette Biscottate Dorate 630g",
             "prezzo_scontato": "2.45",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/155099.jpg",
@@ -12504,7 +12504,7 @@
             }
         },
         {
-            "id": "cd5d50c6",
+            "id": "5e8a3e5e",
             "nome": "Ferrarelle Maxima 6 x 1,5 L",
             "prezzo_scontato": "3.30",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/511152.jpg",
@@ -12631,7 +12631,7 @@
             }
         },
         {
-            "id": "1d07fd41",
+            "id": "99cc2af8",
             "nome": "New Yorkers Chocolate Cookies with 40% Chocolate 150 g",
             "prezzo_scontato": "2.39",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/174132.jpg",
@@ -12748,7 +12748,7 @@
             }
         },
         {
-            "id": "a3289976",
+            "id": "64d3570a",
             "nome": "Spumador Bianca 1,15 l",
             "prezzo_scontato": "1.15",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/515072.jpg",
@@ -12875,7 +12875,7 @@
             }
         },
         {
-            "id": "d7d4b570",
+            "id": "6193c6e9",
             "nome": "Garofalo Spaghetti 9 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114113.jpg",
@@ -13004,7 +13004,7 @@
             }
         },
         {
-            "id": "02542ba6",
+            "id": "93db1369",
             "nome": "Rio mare Filetti di Tonno all'Olio Extra Vergine di Oliva 180 g",
             "prezzo_scontato": "7.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/431047.jpg",
@@ -13121,7 +13121,7 @@
             }
         },
         {
-            "id": "cb71046e",
+            "id": "fd53adcf",
             "nome": "Sant'Anna di Vinadio Frizzante 12 x 0,5 L",
             "prezzo_scontato": "4.20",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/511014.jpg",
@@ -13248,7 +13248,7 @@
             }
         },
         {
-            "id": "3cd46ee8",
+            "id": "d3599450",
             "nome": "Gioiella Fior di Latte Mozzarella di Gioia del Colle DOP 400 g",
             "prezzo_scontato": "6.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/734102.jpg",
@@ -13377,7 +13377,7 @@
             }
         },
         {
-            "id": "fa7ea422",
+            "id": "04695d75",
             "nome": "Coca-Cola Original PET 4 x 1,5 L",
             "prezzo_scontato": "8.06",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/515583.jpg",
@@ -13516,7 +13516,7 @@
             }
         },
         {
-            "id": "636f7db3",
+            "id": "30bb0aa4",
             "nome": "Garofalo Rigatoni 35 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114127.jpg",
@@ -13645,7 +13645,7 @@
             }
         },
         {
-            "id": "501c7e60",
+            "id": "dbcdec6e",
             "nome": "indianino Ghiaccioli ai gusti di Limone, Cola, Arancia, Menta e Amarena 10 x 70 g",
             "prezzo_scontato": "2.89",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608375.jpg",
@@ -13774,7 +13774,7 @@
             }
         },
         {
-            "id": "8ddf6043",
+            "id": "16624e91",
             "nome": "Garofalo Fusilli 63 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114121.jpg",
@@ -13903,7 +13903,7 @@
             }
         },
         {
-            "id": "08df6794",
+            "id": "78dd4171",
             "nome": "Clemente la Terra dell'Olio Olio Extra Vergine di Oliva 100% Italiano 1 l",
             "prezzo_scontato": "13.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/351357.jpg",
@@ -14042,7 +14042,7 @@
             }
         },
         {
-            "id": "46f12b13",
+            "id": "f83b1bef",
             "nome": "Harbour by MOWI Salmone Affumicato Scozzese 100 g",
             "prezzo_scontato": "5.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/321049.jpg",
@@ -14159,7 +14159,7 @@
             }
         },
         {
-            "id": "fb68d79f",
+            "id": "3eb016a1",
             "nome": "Pizzoli PataSnella Patatine 1 kg",
             "prezzo_scontato": "2.85",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/602152.jpg",
@@ -14312,7 +14312,7 @@
             }
         },
         {
-            "id": "4c2f1c70",
+            "id": "fe5ebe37",
             "nome": "Cantine Maschio Prosecco DOC Treviso Extra Dry Millesimato 75 cl",
             "prezzo_scontato": "6.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/557091.jpg",
@@ -14439,7 +14439,7 @@
             }
         },
         {
-            "id": "93d202f9",
+            "id": "6bb6355e",
             "nome": "Spumador Ginger 1,15 l",
             "prezzo_scontato": "1.15",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/515048.jpg",
@@ -14566,7 +14566,7 @@
             }
         },
         {
-            "id": "77613da2",
+            "id": "1add9f7d",
             "nome": "Garofalo Casarecce 88 Pasta di Gragnano IGP 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114132.jpg",
@@ -14695,7 +14695,7 @@
             }
         },
         {
-            "id": "8c58066a",
+            "id": "d0479220",
             "nome": "Rauch bravo Ace Vitamin Drink 2 L",
             "prezzo_scontato": "2.57",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/498484.jpg",
@@ -14822,7 +14822,7 @@
             }
         },
         {
-            "id": "29e6bb2c",
+            "id": "f6db90e8",
             "nome": "Findus Chicken Nuggets 250 g",
             "prezzo_scontato": "3.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/605112.jpg",
@@ -14939,7 +14939,7 @@
             }
         },
         {
-            "id": "f3f08f67",
+            "id": "4d612527",
             "nome": "Garofalo Farfalle 78 Pasta di Semola di Grano Duro 500 g",
             "prezzo_scontato": "1.59",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114120.jpg",
@@ -15056,7 +15056,7 @@
             }
         },
         {
-            "id": "85e8a10b",
+            "id": "a2e5636b",
             "nome": "Piccini Chianti DOGC 75 cl",
             "prezzo_scontato": "5.49",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/553554.jpg",
@@ -15183,7 +15183,7 @@
             }
         },
         {
-            "id": "38cf2c1e",
+            "id": "e9156aea",
             "nome": "Tuborg Fresca Come alla Spina 6 x 33 cl",
             "prezzo_scontato": "6.98",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/531123.jpg",
@@ -15310,7 +15310,7 @@
             }
         },
         {
-            "id": "99f44ed6",
+            "id": "c97e1666",
             "nome": "Rispo Passione Pronta Frittelle con Alghe di Mare di Pasta Lievitata Surgelati 250 g",
             "prezzo_scontato": "1.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/606059.jpg",
@@ -15427,7 +15427,7 @@
             }
         },
         {
-            "id": "15f1f647",
+            "id": "9851fd0f",
             "nome": "Koukakis Dairy Farm Authentic Greek Yoghurt 150 g",
             "prezzo_scontato": "1.28",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/310420.jpg",
@@ -15544,7 +15544,7 @@
             }
         },
         {
-            "id": "e3b69349",
+            "id": "e82ddfc5",
             "nome": "Rio mare Filetti di Tonno all'Olio di Oliva 180 g",
             "prezzo_scontato": "7.99",
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/431046.jpg",

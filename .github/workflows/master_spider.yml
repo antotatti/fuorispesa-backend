@@ -1,0 +1,49 @@
+name: Master Spider - Tutti i Supermercati
+
+on:
+  schedule:
+    # Si avvia all' 1:00 di notte italiana (00:00 solare)
+    - cron: '0 23 * * *'
+  workflow_dispatch: # Tasto per avviarlo a mano
+
+jobs:
+  aggiornamento_notturno:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Scarica il Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Installa Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: ⚙️ Installa il Motore di Navigazione (Playwright)
+        run: |
+          pip install playwright
+          playwright install chromium
+
+      # --- QUI INIZIANO I SINGOLI SUPERMERCATI ---
+      
+      - name: 🛒 Avvio Scraper ESSELUNGA
+        run: python scraper_esselunga.py
+        continue-on-error: true # Fondamentale: se fallisce, passa al prossimo!
+
+      # Quando avrai pronto il file per la Lidl, ti basterà togliere il # da queste righe:
+      # - name: 🛒 Avvio Scraper LIDL
+      #   run: python scraper_lidl.py
+      #   continue-on-error: true
+
+      # - name: 🛒 Avvio Scraper CONAD
+      #   run: python scraper_conad.py
+      #   continue-on-error: true
+
+      # --- SALVATAGGIO FINALE GLOBALE ---
+
+      - name: 💾 Salva TUTTI i nuovi JSON su GitHub
+        run: |
+          git config --global user.name "Master Spider Bot"
+          git config --global user.email "action@github.com"
+          git add *.json
+          git commit -m "Aggiornamento notturno offerte globale" || echo "Nessuna modifica rilevata oggi"
+          git push

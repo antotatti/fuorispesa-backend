@@ -13,6 +13,9 @@ VIA_UTENTE = "Via Vittor Pisani"
 prodotti_catturati_raw = []
 visti_json = set()
 
+# Variabile per tracciare da dove viene il prodotto
+stato_scraper = {"current_fonte": "volantino"}
+
 def esplora_json_ricorsivo(dato):
     if isinstance(dato, dict):
         chiavi = {k.lower(): v for k, v in dato.items()}
@@ -23,6 +26,7 @@ def esplora_json_ricorsivo(dato):
             firma = str(chiavi.get('name', '')) + str(chiavi.get('price', ''))
             if firma not in visti_json:
                 visti_json.add(firma)
+                dato['custom_fonte'] = stato_scraper["current_fonte"]
                 prodotti_catturati_raw.append(dato)
         
         for valore in dato.values():
@@ -94,6 +98,7 @@ async def run_scraper():
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
         print("📖 FASE 1: Sfogliamento Volantini Digitali (inclusi quelli in arrivo)")
+        stato_scraper["current_fonte"] = "volantino"
         try:
             await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000)
             await asyncio.sleep(4)
@@ -108,7 +113,7 @@ async def run_scraper():
                 try:
                     await page.goto(url, timeout=45000)
                     await asyncio.sleep(4)
-                    for _ in range(30): # Scorre 30 pagine di volantino!
+                    for _ in range(40): # Scorre fino a 40 pagine di volantino per non perdere NIENTE!
                         try:
                             btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
                             if await btn.is_visible(timeout=1000):
@@ -125,8 +130,9 @@ async def run_scraper():
         except Exception as e:
             print(f"Errore Volantini: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO ----
+        # ---- FASE 2: E-COMMERCE SPECIFICO (PER LA RICERCA) ----
         print("🛒 FASE 2: Esplorazione Categorie Scontate E-Commerce")
+        stato_scraper["current_fonte"] = "sito"
         reparti = [
             "https://spesaonline.esselunga.it/store/promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni",
@@ -139,7 +145,7 @@ async def run_scraper():
             try:
                 await page.goto(rep_url, timeout=45000)
                 await asyncio.sleep(4)
-                for _ in range(15): # Scende la pagina per 15 volte!
+                for _ in range(20): # Scende la pagina per 20 volte!
                     await page.evaluate("window.scrollBy(0, 2000);")
                     await asyncio.sleep(2)
                     try:
@@ -154,7 +160,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE ----
+    # ---- ELABORAZIONE FINALE E SALVATAGGIO ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -178,6 +184,7 @@ async def run_scraper():
 
         chiave_nome = str(nome).strip().lower()
 
+        # PREVIENE DOPPIONI: I volantini vengono prima, quindi il sito non li sovrascrive
         if chiave_nome not in nomi_inseriti:
             nomi_inseriti.add(chiave_nome)
             
@@ -193,6 +200,7 @@ async def run_scraper():
                     break
 
             req_tessera = 'fidaty' in raw_str or 'fìdaty' in raw_str or 'loyalty' in raw_str
+            fonte_originale = raw.get('custom_fonte', 'volantino')
             
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
@@ -204,7 +212,8 @@ async def run_scraper():
                 "data_inizio": data_inizio,
                 "data_fine": data_fine,
                 "richiede_tessera": req_tessera,
-                "dati_grezzi_completi": raw
+                "dati_grezzi_completi": raw,
+                "fonte": fonte_originale
             })
 
     dati_da_salvare = {

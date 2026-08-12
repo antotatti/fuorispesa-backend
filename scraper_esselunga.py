@@ -153,10 +153,10 @@ async def run_scraper():
             print(f"-> Navigo in: {rep_url}")
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(5) # Aumentato tempo di attesa iniziale
-                for _ in range(25): # Aumentato limite di profondità
+                await asyncio.sleep(5) 
+                for _ in range(25): 
                     await page.evaluate("window.scrollBy(0, 2000);")
-                    await asyncio.sleep(2.5) # Rallentato per permettere il caricamento effettivo
+                    await asyncio.sleep(2.5) 
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
                         if await btn.is_visible(timeout=500):

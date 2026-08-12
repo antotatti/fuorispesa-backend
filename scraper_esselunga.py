@@ -12,8 +12,6 @@ VIA_UTENTE = "Via Vittor Pisani"
 
 prodotti_catturati_raw = []
 visti_json = set()
-
-# Traccia la fonte e il nome del volantino corrente
 stato_scraper = {"current_fonte": "volantino", "current_volantino": ""}
 
 def esplora_json_ricorsivo(dato):
@@ -53,7 +51,6 @@ async def run_scraper():
         page = await context.new_page()
         page.on("response", cattura_traffico)
 
-        # ---- BYPASS INDIRIZZO ----
         try:
             print("📍 Inserimento Indirizzo...")
             await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
@@ -110,7 +107,6 @@ async def run_scraper():
             }''')
             
             for url in set(urls_volantini):
-                # Estrae il vero nome del volantino dal link!
                 try:
                     nome_estratto = url.split("volantino-digitale.")[-1].replace(".html", "").replace("-", " ").upper()
                 except:
@@ -139,31 +135,33 @@ async def run_scraper():
         except Exception as e:
             print(f"Errore Volantini: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO ----
+        # ---- FASE 2: E-COMMERCE SPECIFICO (CON FRUTTA E PIZZA) ----
         print("🛒 FASE 2: Esplorazione Categorie Scontate E-Commerce")
         stato_scraper["current_fonte"] = "sito"
-        stato_scraper["current_volantino"] = "" # Azzeriamo il nome, qui prenderemo la roba generica
+        stato_scraper["current_volantino"] = "" 
         
         reparti = [
             "https://spesaonline.esselunga.it/store/promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-persona/260723?filtri=promozioni",
-            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni"
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/frutta-e-verdura/260713?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/gastronomia-e-piatti-pronti/260716?filtri=promozioni"
         ]
         
         for rep_url in reparti:
             print(f"-> Navigo in: {rep_url}")
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(4)
-                for _ in range(15): 
+                await asyncio.sleep(5) # Aumentato tempo di attesa iniziale
+                for _ in range(25): # Aumentato limite di profondità
                     await page.evaluate("window.scrollBy(0, 2000);")
-                    await asyncio.sleep(2)
+                    await asyncio.sleep(2.5) # Rallentato per permettere il caricamento effettivo
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
                         if await btn.is_visible(timeout=500):
                             await btn.click(force=True)
-                            await asyncio.sleep(2)
+                            await asyncio.sleep(3)
                     except:
                         pass
             except:
@@ -171,7 +169,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE ----
+    # ---- ELABORAZIONE FINALE E SALVATAGGIO ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -210,6 +208,7 @@ async def run_scraper():
                     break
 
             req_tessera = 'fidaty' in raw_str or 'fìdaty' in raw_str or 'loyalty' in raw_str
+            fonte_originale = raw.get('custom_fonte', 'volantino')
             
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
@@ -222,8 +221,8 @@ async def run_scraper():
                 "data_fine": data_fine,
                 "richiede_tessera": req_tessera,
                 "dati_grezzi_completi": raw,
-                "fonte": raw.get('custom_fonte', 'volantino'),
-                "volantino_nome": raw.get('custom_volantino_nome', '') # Aggiunto il nome estratto!
+                "fonte": fonte_originale,
+                "volantino_nome": raw.get('custom_volantino_nome', '')
             })
 
     dati_da_salvare = {

@@ -11,7 +11,9 @@ VIA_UTENTE = "Via Vittor Pisani"
 
 prodotti_catturati_raw = []
 reparti_completati = []
+urls_da_visitare = set()
 
+# Estrae il JSON di base e "ruba" l'URL per la scansione profonda
 def esplora_json_ricorsivo(dato):
     if isinstance(dato, dict):
         chiavi = {k.lower(): v for k, v in dato.items()}
@@ -20,6 +22,14 @@ def esplora_json_ricorsivo(dato):
         
         if ha_nome and ha_prezzo:
             prodotti_catturati_raw.append(dato)
+            
+            # Cerca il link del singolo prodotto per estrarne gli ingredienti dopo
+            p_url = chiavi.get('url') or chiavi.get('producturl') or chiavi.get('seo_url')
+            if p_url and isinstance(p_url, str):
+                if p_url.startswith('/'):
+                    p_url = "https://spesaonline.esselunga.it" + p_url
+                if 'prodotto' in p_url.lower() or 'product' in p_url.lower():
+                    urls_da_visitare.add(p_url)
         
         for valore in dato.values():
             esplora_json_ricorsivo(valore)
@@ -39,7 +49,7 @@ async def cattura_traffico(response):
 
 async def scrape_esselunga_debug():
     print("\n" + "="*60)
-    print(" 🚀 SPIDER ESSELUNGA - CACCIA AI VOLANTINI 🚀")
+    print(" 🚀 SUPER SPIDER ESSELUNGA - CACCIA TOTALE E DEEP SCRAPE 🚀")
     print("="*60)
 
     async with async_playwright() as p:
@@ -112,68 +122,36 @@ async def scrape_esselunga_debug():
                     except:
                         pass
                     await asyncio.sleep(8) 
-                else:
-                    print(f"⚠️ Impossibile trovare i campi.")
             except Exception as e:
                 pass
 
-            # FASE 2: ESTRAZIONE MIRATA DEI LINK DI VOLANTINI E OFFERTE
+            # FASE 2: RACCOLTA TOTALE DELLE CATEGORIE
             print("\n" + "👁️"*20)
-            print("👁️  AVVIO RADAR: CACCIA AI VOLANTINI E AGLI SCONTI...")
+            print("👁️  RICERCA REPARTI (ANIMALI, CURA PERSONA, CASA, ECC.)...")
             
             await page.keyboard.press("Escape")
             await asyncio.sleep(1)
             
-            # URL Forzati per essere sicuri di prendere le sezioni promozionali
+            # Elenco blindato per assicurarci di non saltare gatti e shampoo
             REPARTI_DA_ESPLORARE = [
-                {
-                    "nome": "🔥 SCONTI 30-40-50% (Volantino attuale)",
-                    "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/landing/mix/sconti-30-40-50/260730/centrale-articoli"
-                },
-                {
-                    "nome": "🏷️ TUTTE LE OFFERTE (Volantino Infrasettimanale)",
-                    "url": "https://spesaonline.esselunga.it/store/promozioni"
-                }
+                {"nome": "🏷️ TUTTE LE OFFERTE", "url": "https://spesaonline.esselunga.it/store/promozioni"},
+                {"nome": "🐾 AMICI ANIMALI SCONTATI", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni"},
+                {"nome": "🧴 CURA DELLA PERSONA", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-persona/260723?filtri=promozioni"},
+                {"nome": "🏠 CURA DELLA CASA", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni"},
+                {"nome": "🥩 CARNE E PESCE", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/carne/260714?filtri=promozioni"}
             ]
 
-            # Estraiamo dinamicamente qualsiasi altro banner presente in HomePage che contenga "sconti" o "promozioni"
-            promo_links = await page.evaluate('''() => {
-                let links = document.querySelectorAll("a");
-                let results = [];
-                links.forEach(link => {
-                    let text = link.innerText.toLowerCase();
-                    let url = link.getAttribute('href');
-                    if (url && (url.includes('sconti') || url.includes('promozioni') || url.includes('offerte') || text.includes('scont'))) {
-                        if (url.startsWith('/')) url = "https://spesaonline.esselunga.it" + url;
-                        if (url.includes('esselunga.it')) {
-                            results.push({ "nome": "💥 " + (link.innerText.trim() || "Promozione Speciale"), "url": url });
-                        }
-                    }
-                });
-                return results;
-            }''')
-
-            visti_url = set([r['url'] for r in REPARTI_DA_ESPLORARE])
-            for p_link in promo_links:
-                if p_link['url'] not in visti_url:
-                    visti_url.add(p_link['url'])
-                    REPARTI_DA_ESPLORARE.append(p_link)
-
-            print(f"🎯 BINGO! Trovate {len(REPARTI_DA_ESPLORARE)} vetrine esclusive di Volantini e Sconti.")
-
-            # FASE 3: MOTORE DI NAVIGAZIONE "URL JUMPING"
+            # FASE 3: NAVIGAZIONE DEI REPARTI E CARICAMENTO PRODOTTI
             print("\n" + "*"*50)
-            print("🚀 INIZIO SCANSIONE MEDIANTE SALTO DIRETTO DEGLI URL...")
+            print("🚀 INIZIO SCANSIONE VOLANTINI...")
             
             for reparto in REPARTI_DA_ESPLORARE:
                 nome = reparto['nome']
                 url = reparto['url']
                 
-                print(f"\n🛒 Salto direttamente a: {nome}")
+                print(f"\n🛒 Salto e scansiono: {nome}")
                 try:
                     await page.goto(url, timeout=45000, wait_until="domcontentloaded")
-                    print(f"✅ OK! Atterrato! Attendo l'intercettazione dei file...")
-                    
                     await asyncio.sleep(4) 
                     
                     for i in range(4):
@@ -191,7 +169,24 @@ async def scrape_esselunga_debug():
                     reparti_completati.append(nome)
                             
                 except Exception as e:
-                    print(f"⚠️ Errore di navigazione URL in '{nome}': {e}")
+                    print(f"⚠️ Errore di navigazione in '{nome}'")
+
+            # FASE 4: DEEP SCRAPING (ESTRAZIONE INGREDIENTI E ALLERGENI)
+            urls_list = list(urls_da_visitare)
+            print("\n" + "🔬"*20)
+            print(f"🔬 FASE 4: DEEP SCRAPING DI {len(urls_list)} PRODOTTI!")
+            print("⏳ Il bot sta entrando nei singoli prodotti per leggere gli ingredienti...")
+            
+            # Limitiamo a 150 per non farlo durare ore (puoi aumentare questo numero a piacimento)
+            for idx, url in enumerate(urls_list[:150]):
+                if idx % 10 == 0:
+                    print(f"   ...Scansione prodotto {idx+1}/{len(urls_list[:150])}")
+                try:
+                    # Entra nella pagina del singolo prodotto e intercetta il JSON profondo
+                    await page.goto(url, timeout=12000, wait_until="domcontentloaded")
+                    await asyncio.sleep(1) 
+                except Exception:
+                    pass
 
         except Exception as e:
             print(f"❌ Errore critico globale: {e}")
@@ -199,10 +194,13 @@ async def scrape_esselunga_debug():
         await asyncio.sleep(3)
         await browser.close()
 
+    # FASE 5: PULIZIA E SALVATAGGIO (Dando priorità ai dati profondi)
     prodotti_finali = []
     visti = set()
 
-    for raw in prodotti_catturati_raw:
+    # Leggiamo la lista AL CONTRARIO. 
+    # Così i dati profondi (catturati per ultimi nella fase 4) sovrascrivono quelli di base!
+    for raw in reversed(prodotti_catturati_raw):
         chiavi_basse = {k.lower(): v for k, v in raw.items()}
         
         nome = chiavi_basse.get('name') or chiavi_basse.get('nome') or chiavi_basse.get('title') or chiavi_basse.get('description') or chiavi_basse.get('descrizione')
@@ -220,7 +218,7 @@ async def scrape_esselunga_debug():
 
         img_url = "https://via.placeholder.com/150"
         for k, v in raw.items():
-            if ('image' in k.lower() or 'img' in k.lower() or 'url' in k.lower()) and isinstance(v, str) and 'http' in v:
+            if ('image' in k.lower() or 'img' in k.lower() or 'url' in k.lower()) and isinstance(v, str) and 'http' in v and ('png' in v.lower() or 'jpg' in v.lower()):
                 img_url = v
                 break
 
@@ -234,14 +232,15 @@ async def scrape_esselunga_debug():
                 "immagine_url": img_url,
                 "categoria": "Esselunga", 
                 "data_inizio": datetime.now().strftime("%Y-%m-%d"),
-                "dati_grezzi_completi": raw 
+                "dati_grezzi_completi": raw # Ora contiene ingredienti, produttore, provenienza!
             })
 
     dati_da_salvare = {
         "metadata": {
             "data_scansione": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "reparti_trovati": len(REPARTI_DA_ESPLORARE),
-            "reparti_scansionati_con_successo": len(reparti_completati)
+            "reparti_scansionati_con_successo": len(reparti_completati),
+            "prodotti_visitati_in_profondita": len(urls_list[:150])
         },
         "prodotti": prodotti_finali
     }

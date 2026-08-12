@@ -2,6 +2,7 @@ import asyncio
 from playwright.async_api import async_playwright
 import json
 import uuid
+import re
 from datetime import datetime
 
 # =======================================================
@@ -10,10 +11,11 @@ VIA_UTENTE = "Via Vittor Pisani"
 # =======================================================
 
 prodotti_catturati_raw = []
-reparti_completati = []
-urls_da_visitare = set()
+visti = set()
 
-# Estrae il JSON di base e "ruba" l'URL per la scansione profonda
+# Variabile globale che cambia: prima "volantino", poi "sito"
+stato_scraper = {"current_fonte": "volantino"}
+
 def esplora_json_ricorsivo(dato):
     if isinstance(dato, dict):
         chiavi = {k.lower(): v for k, v in dato.items()}
@@ -21,15 +23,8 @@ def esplora_json_ricorsivo(dato):
         ha_prezzo = 'price' in chiavi or 'prezzo' in chiavi or 'currentprice' in chiavi or 'prezzoscontato' in chiavi or 'listprice' in chiavi
         
         if ha_nome and ha_prezzo:
+            dato['custom_fonte'] = stato_scraper["current_fonte"]
             prodotti_catturati_raw.append(dato)
-            
-            # Cerca il link del singolo prodotto per estrarne gli ingredienti dopo
-            p_url = chiavi.get('url') or chiavi.get('producturl') or chiavi.get('seo_url')
-            if p_url and isinstance(p_url, str):
-                if p_url.startswith('/'):
-                    p_url = "https://spesaonline.esselunga.it" + p_url
-                if 'prodotto' in p_url.lower() or 'product' in p_url.lower():
-                    urls_da_visitare.add(p_url)
         
         for valore in dato.values():
             esplora_json_ricorsivo(valore)
@@ -49,7 +44,7 @@ async def cattura_traffico(response):
 
 async def scrape_esselunga_debug():
     print("\n" + "="*60)
-    print(" 🚀 SUPER SPIDER ESSELUNGA - CACCIA TOTALE E DEEP SCRAPE 🚀")
+    print(" 🚀 SUPER SPIDER ESSELUNGA - VOLANTINI E SITO 🚀")
     print("="*60)
 
     async with async_playwright() as p:
@@ -71,13 +66,10 @@ async def scrape_esselunga_debug():
             except:
                 pass
 
-            # FASE 1: BYPASS INDIRIZZO 
             print("📍 Apro la schermata di inserimento indirizzo...")
             try:
                 btn_verifica = page.locator("text=/VERIFICA INDIRIZZO/i").locator("visible=true").first
-                await btn_verifica.wait_for(state="visible", timeout=5000)
                 await btn_verifica.click()
-                
                 await page.locator("input").locator("visible=true").first.wait_for(state="visible", timeout=8000)
                 await asyncio.sleep(2) 
                 
@@ -85,79 +77,94 @@ async def scrape_esselunga_debug():
                 count = await inputs_visibili.count()
                 
                 if count >= 2:
-                    cap_index = count - 2
-                    via_index = count - 1
-                    
-                    print(f"✍️ Inserisco CAP: {CAP_UTENTE}")
-                    await inputs_visibili.nth(cap_index).click(force=True)
+                    await inputs_visibili.nth(count - 2).click(force=True)
                     await page.keyboard.type(CAP_UTENTE, delay=100)
                     await asyncio.sleep(1)
-
-                    print(f"✍️ Inserisco VIA: {VIA_UTENTE}")
-                    await inputs_visibili.nth(via_index).click(force=True)
+                    await inputs_visibili.nth(count - 1).click(force=True)
                     await page.keyboard.type(VIA_UTENTE, delay=100)
-                    
                     await asyncio.sleep(4) 
                     
                     await page.keyboard.press("Space")
                     await asyncio.sleep(0.5)
                     await page.keyboard.press("Backspace")
                     await asyncio.sleep(2)
-
                     await page.keyboard.press("ArrowDown")
                     await asyncio.sleep(1)
                     await page.keyboard.press("Enter")
                     await asyncio.sleep(2)
 
                     try:
-                        btn_cerca = page.locator("button:has-text('cerca')").locator("visible=true").first
-                        await btn_cerca.click(timeout=3000)
+                        await page.locator("button:has-text('cerca')").locator("visible=true").first.click(timeout=3000)
                     except:
                         await page.keyboard.press("Enter")
                     await asyncio.sleep(4) 
                     
                     try:
-                        btn_casa = page.locator("text=/ESSELUNGA A CASA/i").locator("visible=true").first
-                        await btn_casa.click(force=True, timeout=5000)
+                        await page.locator("text=/ESSELUNGA A CASA/i").locator("visible=true").first.click(force=True, timeout=5000)
                     except:
                         pass
                     await asyncio.sleep(8) 
-            except Exception as e:
+            except Exception:
                 pass
 
-            # FASE 2: RACCOLTA TOTALE DELLE CATEGORIE
-            print("\n" + "👁️"*20)
-            print("👁️  RICERCA REPARTI (ANIMALI, CURA PERSONA, CASA, ECC.)...")
-            
             await page.keyboard.press("Escape")
             await asyncio.sleep(1)
             
-            # Elenco blindato per assicurarci di non saltare gatti e shampoo
-            REPARTI_DA_ESPLORARE = [
-                {"nome": "🏷️ TUTTE LE OFFERTE", "url": "https://spesaonline.esselunga.it/store/promozioni"},
-                {"nome": "🐾 AMICI ANIMALI SCONTATI", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni"},
-                {"nome": "🧴 CURA DELLA PERSONA", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-persona/260723?filtri=promozioni"},
-                {"nome": "🏠 CURA DELLA CASA", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni"},
-                {"nome": "🥩 CARNE E PESCE", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/carne/260714?filtri=promozioni"}
+            # --- START FASE 1: VOLANTINI (HOME APP) ---
+            print("\n" + "👁️"*20)
+            print("👁️ FASE 1: CATTURA DEI VOLANTINI ATTUALI E FUTURI")
+            stato_scraper["current_fonte"] = "volantino"
+
+            urls_volantini = []
+            try:
+                await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000, wait_until="domcontentloaded")
+                await asyncio.sleep(5)
+                urls_volantini = await page.evaluate('''() => {
+                    return Array.from(document.querySelectorAll('a'))
+                        .map(a => a.href)
+                        .filter(href => href.includes('volantino-digitale'));
+                }''')
+                urls_volantini = list(set(urls_volantini))
+            except:
+                pass
+
+            for url in urls_volantini:
+                print(f"📖 Sfoglio Volantino: {url}")
+                try:
+                    await page.goto(url, timeout=45000, wait_until="domcontentloaded")
+                    await asyncio.sleep(5)
+                    for i in range(4):
+                        try:
+                            await page.locator(".swiper-button-next, .next-page, button[aria-label*='Avanti']").first.click(timeout=1500)
+                            await asyncio.sleep(2)
+                        except:
+                            await page.evaluate("window.scrollBy(0, 1000);")
+                            await asyncio.sleep(2)
+                except:
+                    pass
+
+            # --- START FASE 2: SITO COMPLETO (RICERCA APP) ---
+            print("\n" + "*"*50)
+            print("🚀 FASE 2: SCANSIONE DEL CATALOGO PROMOZIONALE SITO...")
+            stato_scraper["current_fonte"] = "sito"
+
+            REPARTI_SITO = [
+                {"nome": "Tutte le Offerte", "url": "https://spesaonline.esselunga.it/store/promozioni"},
+                {"nome": "Amici Animali", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni"},
+                {"nome": "Cura Persona", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-persona/260723?filtri=promozioni"},
+                {"nome": "Cura Casa", "url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni"}
             ]
 
-            # FASE 3: NAVIGAZIONE DEI REPARTI E CARICAMENTO PRODOTTI
-            print("\n" + "*"*50)
-            print("🚀 INIZIO SCANSIONE VOLANTINI...")
-            
-            for reparto in REPARTI_DA_ESPLORARE:
+            for reparto in REPARTI_SITO:
                 nome = reparto['nome']
                 url = reparto['url']
-                
-                print(f"\n🛒 Salto e scansiono: {nome}")
+                print(f"\n🛒 Navigo in: {nome}")
                 try:
                     await page.goto(url, timeout=45000, wait_until="domcontentloaded")
                     await asyncio.sleep(4) 
-                    
-                    for i in range(4):
+                    for i in range(5):
                         await page.evaluate("window.scrollBy(0, 1500);")
-                        await asyncio.sleep(2.5)
-                        
+                        await asyncio.sleep(2)
                         try:
                             btn_altro = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
                             if await btn_altro.is_visible(timeout=500):
@@ -165,28 +172,8 @@ async def scrape_esselunga_debug():
                                 await asyncio.sleep(2)
                         except:
                             pass
-                            
-                    reparti_completati.append(nome)
-                            
                 except Exception as e:
-                    print(f"⚠️ Errore di navigazione in '{nome}'")
-
-            # FASE 4: DEEP SCRAPING (ESTRAZIONE INGREDIENTI E ALLERGENI)
-            urls_list = list(urls_da_visitare)
-            print("\n" + "🔬"*20)
-            print(f"🔬 FASE 4: DEEP SCRAPING DI {len(urls_list)} PRODOTTI!")
-            print("⏳ Il bot sta entrando nei singoli prodotti per leggere gli ingredienti...")
-            
-            # Limitiamo a 150 per non farlo durare ore (puoi aumentare questo numero a piacimento)
-            for idx, url in enumerate(urls_list[:150]):
-                if idx % 10 == 0:
-                    print(f"   ...Scansione prodotto {idx+1}/{len(urls_list[:150])}")
-                try:
-                    # Entra nella pagina del singolo prodotto e intercetta il JSON profondo
-                    await page.goto(url, timeout=12000, wait_until="domcontentloaded")
-                    await asyncio.sleep(1) 
-                except Exception:
-                    pass
+                    print(f"⚠️ Errore di navigazione in '{nome}': {e}")
 
         except Exception as e:
             print(f"❌ Errore critico globale: {e}")
@@ -194,53 +181,58 @@ async def scrape_esselunga_debug():
         await asyncio.sleep(3)
         await browser.close()
 
-    # FASE 5: PULIZIA E SALVATAGGIO (Dando priorità ai dati profondi)
+    # ELABORAZIONE DEI PRODOTTI TROVATI
     prodotti_finali = []
-    visti = set()
+    nomi_inseriti = set()
 
-    # Leggiamo la lista AL CONTRARIO. 
-    # Così i dati profondi (catturati per ultimi nella fase 4) sovrascrivono quelli di base!
-    for raw in reversed(prodotti_catturati_raw):
-        chiavi_basse = {k.lower(): v for k, v in raw.items()}
+    # Leggiamo i dati: Volantini hanno la priorità (sono salvati prima), il Sito colma i buchi.
+    for raw in prodotti_catturati_raw:
+        chiavi = {k.lower(): v for k, v in raw.items()}
         
-        nome = chiavi_basse.get('name') or chiavi_basse.get('nome') or chiavi_basse.get('title') or chiavi_basse.get('description') or chiavi_basse.get('descrizione')
+        nome = chiavi.get('name') or chiavi.get('nome') or chiavi.get('title') or chiavi.get('description')
         if not nome or len(str(nome)) < 3: continue
         
-        prezzo_raw = chiavi_basse.get('price') or chiavi_basse.get('prezzo') or chiavi_basse.get('currentprice') or chiavi_basse.get('prezzoscontato') or chiavi_basse.get('listprice')
+        prezzo_raw = chiavi.get('price') or chiavi.get('prezzo') or chiavi.get('currentprice') or chiavi.get('discountedprice')
         if not prezzo_raw: continue
         
-        prezzo_str = str(prezzo_raw).replace(',', '.')
         try:
-            prezzo_float = float(''.join(c for c in prezzo_str if c.isdigit() or c == '.'))
-            if prezzo_float <= 0: continue
+            p_scontato = float(str(prezzo_raw).replace(',', '.').replace('€', '').strip())
+            if p_scontato <= 0: continue
         except:
             continue
 
-        img_url = "https://via.placeholder.com/150"
-        for k, v in raw.items():
-            if ('image' in k.lower() or 'img' in k.lower() or 'url' in k.lower()) and isinstance(v, str) and 'http' in v and ('png' in v.lower() or 'jpg' in v.lower()):
-                img_url = v
-                break
+        chiave_nome = str(nome).strip().lower()
 
-        chiave = f"{nome}_{prezzo_float}"
-        if chiave not in visti:
-            visti.add(chiave)
+        # PREVIENE I DOPPIONI DANDO PRIORITÀ AL VOLANTINO
+        if chiave_nome not in nomi_inseriti:
+            nomi_inseriti.add(chiave_nome)
+            
+            raw_str = json.dumps(raw).lower()
+            date_match = re.search(r'dal (\d{2}/\d{2}/\d{4})\s*al\s*(\d{2}/\d{2}/\d{4})', raw_str)
+            data_inizio = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
+            data_fine = date_match.group(2) if date_match else "N/D"
+
+            img_url = "https://via.placeholder.com/150"
+            for k, v in raw.items():
+                if ('image' in k.lower() or 'img' in k.lower() or 'url' in k.lower()) and isinstance(v, str) and 'http' in v:
+                    img_url = v
+                    break
+
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
                 "nome": str(nome)[:100],
-                "prezzo_scontato": f"{prezzo_float:.2f}",
+                "prezzo_scontato": f"{p_scontato:.2f}",
                 "immagine_url": img_url,
                 "categoria": "Esselunga", 
-                "data_inizio": datetime.now().strftime("%Y-%m-%d"),
-                "dati_grezzi_completi": raw # Ora contiene ingredienti, produttore, provenienza!
+                "data_inizio": data_inizio,
+                "data_fine": data_fine,
+                "dati_grezzi_completi": raw,
+                "fonte": raw.get('custom_fonte', 'volantino')
             })
 
     dati_da_salvare = {
         "metadata": {
-            "data_scansione": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "reparti_trovati": len(REPARTI_DA_ESPLORARE),
-            "reparti_scansionati_con_successo": len(reparti_completati),
-            "prodotti_visitati_in_profondita": len(urls_list[:150])
+            "data_scansione": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         },
         "prodotti": prodotti_finali
     }
@@ -249,7 +241,7 @@ async def scrape_esselunga_debug():
         json.dump(dati_da_salvare, f, indent=4, ensure_ascii=False)
     
     print("\n" + "📊 "*15)
-    print(f"🎯 PRODOTTI VOLANTINO SALVATI: {len(prodotti_finali)}")
+    print(f"🎯 PRODOTTI IBRIDI SALVATI: {len(prodotti_finali)}")
     print("📊 "*15 + "\n")
 
 if __name__ == "__main__":

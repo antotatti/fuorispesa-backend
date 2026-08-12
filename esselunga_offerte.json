@@ -1,16 +1,19 @@
 {
     "metadata": {
-        "data_scansione": "2026-08-12 11:14:29"
+        "data_scansione": "2026-08-12 14:10:42",
+        "prodotti_totali": 23
     },
     "prodotti": [
         {
-            "id": "91afae2c",
+            "id": "637ae8c9",
             "nome": "Lec Swirly Pistachi-Oh! 268 g",
             "prezzo_scontato": "4.99",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608030.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5887127,
                 "code": "608030",
@@ -96,117 +99,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5887127,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5887127
+            }
         },
         {
-            "id": "8b5de43d",
-            "nome": "Lec Why Nut? 273 g",
-            "prezzo_scontato": "4.99",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608104.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "2026-08-12",
-            "data_fine": "N/D",
-            "dati_grezzi_completi": {
-                "id": 5912791,
-                "code": "608104",
-                "grmCode": "608",
-                "subGrmCode": "300",
-                "companyCode": "ESS",
-                "description": "Lec Why Nut? 273 g",
-                "htmlDescription": null,
-                "brand": "LEC",
-                "label": "18,28 € / kg ",
-                "labelNoVat": "16,64 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608104.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/608104.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/608104.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/608104.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": null,
-                "trolleyDepartmentId": 17,
-                "price": 4.99,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 4.99,
-                "priceNoVat": 4.54,
-                "discountedPriceNoVat": 4.54,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "273",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "lec-why-nut-273-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5912791,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "34b26e84",
+            "id": "73c04c8c",
             "nome": "Fiorentini Choco Si Fondente 2 x 13 g",
             "prezzo_scontato": "1.10",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/156450.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5773368,
                 "code": "156450",
@@ -317,19 +222,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5773368,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5773368
+            }
         },
         {
-            "id": "1962c3e3",
+            "id": "f2258b59",
             "nome": "Pringles Paprika 70 g",
             "prezzo_scontato": "1.44",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157788.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5525722,
                 "code": "157788",
@@ -440,19 +345,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5525722,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5525722
+            }
         },
         {
-            "id": "bdd235ce",
+            "id": "38bd15c7",
             "nome": "Kettle Cooked Chips Jalapeños 150 g",
             "prezzo_scontato": "1.99",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157451.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5914918,
                 "code": "157451",
@@ -551,130 +456,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5914918,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5914918
+            }
         },
         {
-            "id": "77183b1e",
-            "nome": "Kettle Cooked Chips Paprika 150 g",
-            "prezzo_scontato": "1.99",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "2026-08-12",
-            "data_fine": "N/D",
-            "dati_grezzi_completi": {
-                "id": 5914917,
-                "code": "157450",
-                "grmCode": "157",
-                "subGrmCode": "008",
-                "companyCode": "ESS",
-                "description": "Kettle Cooked Chips Paprika 150 g",
-                "htmlDescription": null,
-                "brand": "Unbranded",
-                "label": "13,27 € / kg ",
-                "labelNoVat": "12,07 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/157450.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157450.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/157450.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": null,
-                "trolleyDepartmentId": 17,
-                "price": 1.99,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 1.99,
-                "priceNoVat": 1.81,
-                "discountedPriceNoVat": 1.81,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5914917,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "150",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "kettle-cooked-chips-paprika-150-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5914917,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "853b3c36",
+            "id": "0b0ff249",
             "nome": "Pringles Minis Original 6 x 20 g",
             "prezzo_scontato": "2.69",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/157129.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5914907,
                 "code": "157129",
@@ -785,154 +579,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5914907,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5914907
+            }
         },
         {
-            "id": "4f269738",
-            "nome": "Gran Cereale Biscotti con Mandorla Salata e Cioccolato Fondente 100% Ingredienti Vegetali 280g",
-            "prezzo_scontato": "2.49",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173034.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "2026-08-12",
-            "data_fine": "N/D",
-            "dati_grezzi_completi": {
-                "id": 5916322,
-                "code": "173034",
-                "grmCode": "173",
-                "subGrmCode": "500",
-                "companyCode": "ESS",
-                "description": "Gran Cereale Biscotti con Mandorla Salata e Cioccolato Fondente 100% Ingredienti Vegetali 280g",
-                "htmlDescription": null,
-                "brand": "Gran Cereale",
-                "label": "8,90 € / kg ",
-                "labelNoVat": "8,08 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173034.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/173034.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173034.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/173034.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": null,
-                "trolleyDepartmentId": 17,
-                "price": 2.49,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 2.49,
-                "priceNoVat": 2.26,
-                "discountedPriceNoVat": 2.26,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5916322,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/vegano.webp"
-                        ],
-                        "text": "Prodotto idoneo ai vegani o 100% vegetale. Per allergeni verificare gli ingredienti.",
-                        "productId": 5916322,
-                        "layoutType": "ALL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/vegano.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/integrale.webp"
-                        ],
-                        "text": "Prodotto Integrale",
-                        "productId": 5916322,
-                        "layoutType": "PRODUCT_DETAIL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/integrale.webp"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "280",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "gran-cereale-biscotti-con-mandorla-salata-e-cioccolato-fondente-100-ingredienti-vegetali-280g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5916322,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "c7584e2d",
+            "id": "8f4342cc",
             "nome": "Gran Cereale Biscotti con Nocciola Caramellata e Cioccolato Fondente 100% Ingredienti Vegetali 280g",
             "prezzo_scontato": "2.49",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/173033.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5916321,
                 "code": "173033",
@@ -1055,19 +714,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5916321,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5916321
+            }
         },
         {
-            "id": "3c3017e3",
+            "id": "11f5854c",
             "nome": "Esselunga Top Confettura Extra Ciliegie 340 g",
             "prezzo_scontato": "3.49",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231584.jpg",
             "categoria": "Esselunga",
             "data_inizio": "01/05/2026",
             "data_fine": "31/10/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5914685,
                 "code": "231584",
@@ -1211,643 +870,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5914685,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5914685
+            }
         },
         {
-            "id": "b353a5c9",
-            "nome": "Esselunga Top Confettura Extra Albicocche 340 g",
-            "prezzo_scontato": "3.49",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231583.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "01/05/2026",
-            "data_fine": "31/10/2026",
-            "dati_grezzi_completi": {
-                "id": 5914684,
-                "code": "231583",
-                "grmCode": "231",
-                "subGrmCode": "0",
-                "companyCode": "ESS",
-                "description": "Esselunga Top Confettura Extra Albicocche 340 g",
-                "htmlDescription": null,
-                "brand": "Esselunga",
-                "label": "10,27 € / kg ",
-                "labelNoVat": "9,33 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231583.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/231583.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231583.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/231583.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": "Albicocche ",
-                "trolleyDepartmentId": 17,
-                "price": 3.49,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 3.49,
-                "priceNoVat": 3.17,
-                "discountedPriceNoVat": 3.17,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5914684,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                        ],
-                        "text": "Prodotto senza glutine. Per allergeni verificare gli ingredienti",
-                        "productId": 5914684,
-                        "layoutType": "ALL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                        ],
-                        "text": "L'eccellenza di Esselunga",
-                        "productId": 5914684,
-                        "layoutType": "PRODUCT_DETAIL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/promozioni/promo_hide.png"
-                        ],
-                        "text": "  (dal 01/05/2026 al 31/10/2026)",
-                        "productId": 5914684,
-                        "actionType": 16,
-                        "initiativeId": null,
-                        "firstRowMessage": null,
-                        "secondRowMessage": null,
-                        "messageType": "PROMO",
-                        "layoutType": "ALL",
-                        "url": "/html/img/icon/promozioni/promo_hide.png"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [
-                    {
-                        "description": "16 - Sconto Articolo Fìdaty x Classe",
-                        "value": null,
-                        "fidaVepr": "20261302",
-                        "promoType": "DISCOUNT"
-                    }
-                ],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "340",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "esselunga-top-confettura-extra-albicocche-340-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5914684,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "155906c6",
-            "nome": "Esselunga Top Confettura Extra Fragole 340 g",
-            "prezzo_scontato": "3.49",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231582.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "01/05/2026",
-            "data_fine": "31/10/2026",
-            "dati_grezzi_completi": {
-                "id": 5914683,
-                "code": "231582",
-                "grmCode": "231",
-                "subGrmCode": "0",
-                "companyCode": "ESS",
-                "description": "Esselunga Top Confettura Extra Fragole 340 g",
-                "htmlDescription": null,
-                "brand": "Esselunga",
-                "label": "10,27 € / kg ",
-                "labelNoVat": "9,33 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231582.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/231582.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231582.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/231582.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": "Fragole ",
-                "trolleyDepartmentId": 17,
-                "price": 3.49,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 3.49,
-                "priceNoVat": 3.17,
-                "discountedPriceNoVat": 3.17,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5914683,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                        ],
-                        "text": "Prodotto senza glutine. Per allergeni verificare gli ingredienti",
-                        "productId": 5914683,
-                        "layoutType": "ALL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                        ],
-                        "text": "L'eccellenza di Esselunga",
-                        "productId": 5914683,
-                        "layoutType": "PRODUCT_DETAIL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/promozioni/promo_hide.png"
-                        ],
-                        "text": "  (dal 01/05/2026 al 31/10/2026)",
-                        "productId": 5914683,
-                        "actionType": 16,
-                        "initiativeId": null,
-                        "firstRowMessage": null,
-                        "secondRowMessage": null,
-                        "messageType": "PROMO",
-                        "layoutType": "ALL",
-                        "url": "/html/img/icon/promozioni/promo_hide.png"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [
-                    {
-                        "description": "16 - Sconto Articolo Fìdaty x Classe",
-                        "value": null,
-                        "fidaVepr": "20261302",
-                        "promoType": "DISCOUNT"
-                    }
-                ],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "340",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "esselunga-top-confettura-extra-fragole-340-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5914683,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "f7e27650",
-            "nome": "Esselunga Top Confettura Extra Pere 340 g",
-            "prezzo_scontato": "3.49",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231581.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "01/05/2026",
-            "data_fine": "31/10/2026",
-            "dati_grezzi_completi": {
-                "id": 5914682,
-                "code": "231581",
-                "grmCode": "231",
-                "subGrmCode": "0",
-                "companyCode": "ESS",
-                "description": "Esselunga Top Confettura Extra Pere 340 g",
-                "htmlDescription": null,
-                "brand": "Esselunga",
-                "label": "10,27 € / kg ",
-                "labelNoVat": "9,33 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231581.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/231581.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231581.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/231581.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": "Pere ",
-                "trolleyDepartmentId": 17,
-                "price": 3.49,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 3.49,
-                "priceNoVat": 3.17,
-                "discountedPriceNoVat": 3.17,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5914682,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                        ],
-                        "text": "Prodotto senza glutine. Per allergeni verificare gli ingredienti",
-                        "productId": 5914682,
-                        "layoutType": "ALL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                        ],
-                        "text": "L'eccellenza di Esselunga",
-                        "productId": 5914682,
-                        "layoutType": "PRODUCT_DETAIL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/promozioni/promo_hide.png"
-                        ],
-                        "text": "  (dal 01/05/2026 al 31/10/2026)",
-                        "productId": 5914682,
-                        "actionType": 16,
-                        "initiativeId": null,
-                        "firstRowMessage": null,
-                        "secondRowMessage": null,
-                        "messageType": "PROMO",
-                        "layoutType": "ALL",
-                        "url": "/html/img/icon/promozioni/promo_hide.png"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [
-                    {
-                        "description": "16 - Sconto Articolo Fìdaty x Classe",
-                        "value": null,
-                        "fidaVepr": "20261302",
-                        "promoType": "DISCOUNT"
-                    }
-                ],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "340",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "esselunga-top-confettura-extra-pere-340-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5914682,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "33a22c2b",
-            "nome": "Esselunga Top Confettura Extra Pesche 340 g",
-            "prezzo_scontato": "3.49",
-            "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231580.jpg",
-            "categoria": "Esselunga",
-            "data_inizio": "01/05/2026",
-            "data_fine": "31/10/2026",
-            "dati_grezzi_completi": {
-                "id": 5914681,
-                "code": "231580",
-                "grmCode": "231",
-                "subGrmCode": "0",
-                "companyCode": "ESS",
-                "description": "Esselunga Top Confettura Extra Pesche 340 g",
-                "htmlDescription": null,
-                "brand": "Esselunga",
-                "label": "10,27 € / kg ",
-                "labelNoVat": "9,33 € / kg (IVA esclusa) ",
-                "imageURL": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231580.jpg",
-                "images": [
-                    {
-                        "small": "https://images.services.esselunga.it/html/img_prodotti/esselunga/medium2/231580.jpg",
-                        "medium": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/231580.jpg",
-                        "big": "https://images.services.esselunga.it/html/img_prodotti/esselunga/xbig/231580.jpg",
-                        "shot": null,
-                        "orderNo": 1
-                    }
-                ],
-                "familyAttributes": "Pesche ",
-                "trolleyDepartmentId": 17,
-                "price": 3.49,
-                "fullUnitPriceLabel": null,
-                "discountedPrice": 3.49,
-                "priceNoVat": 3.17,
-                "discountedPriceNoVat": 3.17,
-                "attributes": [],
-                "attributeFeatures": [],
-                "trolleyItemQuantity": 0,
-                "intervals": [],
-                "values": [
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/novita.webp"
-                        ],
-                        "text": "Novità in assortimento",
-                        "productId": 5914681,
-                        "layoutType": "ALL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": "novita",
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/novita.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                        ],
-                        "text": "Prodotto senza glutine. Per allergeni verificare gli ingredienti",
-                        "productId": 5914681,
-                        "layoutType": "ALL",
-                        "htmlPosition": "HEADER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/senza_glutine.webp"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                        ],
-                        "text": "L'eccellenza di Esselunga",
-                        "productId": 5914681,
-                        "layoutType": "PRODUCT_DETAIL",
-                        "htmlPosition": "FOOTER",
-                        "htmlClass": null,
-                        "messageType": "PRODUCT_TITLE",
-                        "url": "/html/img/icon/prodotti/displayable/esselunga_top.gif"
-                    },
-                    {
-                        "urls": [
-                            "/html/img/icon/promozioni/promo_hide.png"
-                        ],
-                        "text": "  (dal 01/05/2026 al 31/10/2026)",
-                        "productId": 5914681,
-                        "actionType": 16,
-                        "initiativeId": null,
-                        "firstRowMessage": null,
-                        "secondRowMessage": null,
-                        "messageType": "PROMO",
-                        "layoutType": "ALL",
-                        "url": "/html/img/icon/promozioni/promo_hide.png"
-                    }
-                ],
-                "children": [],
-                "familySetId": null,
-                "relatedSetId": null,
-                "sponsoredSetId": null,
-                "variableWeight": false,
-                "outOfStock": false,
-                "omnibus": false,
-                "inOut": false,
-                "stagionale": false,
-                "tooltipInformativaPromoMessage": null,
-                "productType": "GROCERY",
-                "raee": false,
-                "quantity": 1,
-                "redemptionPoints": null,
-                "menuItemPath": null,
-                "mainOriginCountry": null,
-                "firstOriginCountry": null,
-                "secondOriginCountry": null,
-                "tipoTracciabilita": null,
-                "sticky": false,
-                "premium": false,
-                "showPriceInFreeVisit": false,
-                "promotionsDetail": [
-                    {
-                        "description": "16 - Sconto Articolo Fìdaty x Classe",
-                        "value": null,
-                        "fidaVepr": "20261302",
-                        "promoType": "DISCOUNT"
-                    }
-                ],
-                "parentId": null,
-                "sponsoredCount": null,
-                "unitText": "g",
-                "unitValue": "340",
-                "availableQuantity": null,
-                "alternativeProducts": [],
-                "alternativeProductChoice": null,
-                "tipoPrenotazione": null,
-                "suggestedQtyPeople": null,
-                "calibro": null,
-                "originRawMaterialText": null,
-                "quantityDisabled": false,
-                "minimoPrenotabile": null,
-                "minsanCode": null,
-                "sponsoredSearch": false,
-                "sponsoredMenu": false,
-                "sanitizeDescription": "esselunga-top-confettura-extra-pesche-340-g",
-                "familyType": null,
-                "color": null,
-                "descriptionColor": null,
-                "brandId": null,
-                "subBrandId": null,
-                "ratingsSummary": null,
-                "vat": 0.1,
-                "retailMediaInfo": null,
-                "rmtInfo": null,
-                "barcode": null,
-                "categoriaFev": null,
-                "canBeAddedToShoppingList": true,
-                "productId": 5914681,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
-        },
-        {
-            "id": "ed5dd9c6",
+            "id": "63d6c344",
             "nome": "Fruit-tella Bella Fra 140 g",
             "prezzo_scontato": "1.49",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/251045.jpg",
             "categoria": "Esselunga",
             "data_inizio": "2026-08-12",
             "data_fine": "N/D",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5412843,
                 "code": "251045",
@@ -1946,19 +981,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5412843,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5412843
+            }
         },
         {
-            "id": "8efce65a",
+            "id": "6c0953a5",
             "nome": "Melone Mantovano IGP ",
-            "prezzo_scontato": "2.55",
+            "prezzo_scontato": "1.78",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/761429.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5752375,
                 "code": "761429",
@@ -2092,19 +1127,19 @@
                 "barcode": null,
                 "categoriaFev": "I",
                 "canBeAddedToShoppingList": true,
-                "productId": 5752375,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5752375
+            }
         },
         {
-            "id": "6543194e",
+            "id": "91054208",
             "nome": "Burro formato contadino 250 g",
-            "prezzo_scontato": "3.79",
+            "prezzo_scontato": "2.27",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/313056.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5375831,
                 "code": "313056",
@@ -2212,19 +1247,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5375831,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5375831
+            }
         },
         {
-            "id": "b419971a",
+            "id": "d5993104",
             "nome": "De Cecco Olio Extra Vergine di Oliva Classico 1 L",
             "prezzo_scontato": "11.90",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/351265.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5388939,
                 "code": "351265",
@@ -2342,19 +1377,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5388939,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5388939
+            }
         },
         {
-            "id": "32a6e54f",
+            "id": "9c0cc034",
             "nome": "Mutti Polpa di Pomodoro 3 x 400 g",
-            "prezzo_scontato": "3.59",
+            "prezzo_scontato": "2.15",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/411418.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5385520,
                 "code": "411418",
@@ -2462,19 +1497,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5385520,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5385520
+            }
         },
         {
-            "id": "b53e7810",
+            "id": "fc53bbd1",
             "nome": "Esselunga filetto di salmone",
-            "prezzo_scontato": "29.85",
+            "prezzo_scontato": "20.89",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/731228.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5382651,
                 "code": "731228",
@@ -2596,19 +1631,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5382651,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5382651
+            }
         },
         {
-            "id": "80868904",
+            "id": "9fa2e62b",
             "nome": "Esselunga Naturama Hamburger scottona bovino adulto classici 250 g",
-            "prezzo_scontato": "5.82",
+            "prezzo_scontato": "3.49",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/714813.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5745337,
                 "code": "714813",
@@ -2728,19 +1763,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5745337,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5745337
+            }
         },
         {
-            "id": "4cb0a640",
+            "id": "a629ce73",
             "nome": "Esselunga Ceci 3 x 380 g",
-            "prezzo_scontato": "1.85",
+            "prezzo_scontato": "1.55",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/412104.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5391738,
                 "code": "412104",
@@ -2848,19 +1883,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5391738,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5391738
+            }
         },
         {
-            "id": "d5b1f2e7",
+            "id": "cbecdda0",
             "nome": "Granarolo Mozzarella Fresca 4 x 100 g",
-            "prezzo_scontato": "4.58",
+            "prezzo_scontato": "2.29",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/721623.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5683364,
                 "code": "721623",
@@ -2980,19 +2015,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5683364,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5683364
+            }
         },
         {
-            "id": "a8be1e21",
+            "id": "9dbba872",
             "nome": "Esselunga Naturama Bis julienne 300 g",
-            "prezzo_scontato": "1.98",
+            "prezzo_scontato": "1.18",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/755453.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5763608,
                 "code": "755453",
@@ -3124,19 +2159,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5763608,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5763608
+            }
         },
         {
-            "id": "2c9e3eb5",
+            "id": "b4a10cb7",
             "nome": "Gran Biscotto Selezione oro ",
-            "prezzo_scontato": "31.90",
+            "prezzo_scontato": "19.90",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/737200.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5538304,
                 "code": "737200",
@@ -3311,19 +2346,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5538304,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5538304
+            }
         },
         {
-            "id": "5ff00a3d",
+            "id": "7074cb44",
             "nome": "Esselunga suino fettine di lonza (arista) disossata confezione risparmio ",
-            "prezzo_scontato": "10.32",
+            "prezzo_scontato": "6.19",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/709205.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5398268,
                 "code": "709205",
@@ -3445,19 +2480,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5398268,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5398268
+            }
         },
         {
-            "id": "287c34c3",
+            "id": "b79ea4db",
             "nome": "Esselunga Naturama Polpa trita scelta scottona bovino adulto 400 g",
-            "prezzo_scontato": "8.65",
+            "prezzo_scontato": "5.19",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/707401.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5430232,
                 "code": "707401",
@@ -3577,19 +2612,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5430232,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5430232
+            }
         },
         {
-            "id": "acace4d6",
+            "id": "f9b1df41",
             "nome": "Esselunga Naturama mini filetti di pollo allevato senza uso di antibiotici ",
-            "prezzo_scontato": "16.57",
+            "prezzo_scontato": "11.59",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/708070.jpg",
             "categoria": "Esselunga",
             "data_inizio": "30/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5714398,
                 "code": "708070",
@@ -3735,19 +2770,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5714398,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5714398
+            }
         },
         {
-            "id": "7eaa743a",
+            "id": "e12100d0",
             "nome": "Harbour by MOWI Salmone Affumicato Norvegese 150 g",
-            "prezzo_scontato": "7.98",
+            "prezzo_scontato": "3.99",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/321048.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5542700,
                 "code": "321048",
@@ -3867,19 +2902,19 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5542700,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5542700
+            }
         },
         {
-            "id": "d9d6e92d",
+            "id": "a5b77658",
             "nome": "Garofalo Penne Ziti Rigate 70 Pasta di Gragnano IGP 500 g",
-            "prezzo_scontato": "1.59",
+            "prezzo_scontato": "0.79",
+            "prezzo_originale": null,
             "immagine_url": "https://images.services.esselunga.it/html/img_prodotti/esselunga/big/114128.jpg",
             "categoria": "Esselunga",
             "data_inizio": "29/07/2026",
             "data_fine": "12/08/2026",
+            "richiede_tessera": false,
             "dati_grezzi_completi": {
                 "id": 5420680,
                 "code": "114128",
@@ -3999,10 +3034,8 @@
                 "barcode": null,
                 "categoriaFev": null,
                 "canBeAddedToShoppingList": true,
-                "productId": 5420680,
-                "custom_fonte": "volantino"
-            },
-            "fonte": "volantino"
+                "productId": 5420680
+            }
         }
     ]
 }

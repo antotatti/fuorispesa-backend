@@ -13,8 +13,8 @@ VIA_UTENTE = "Via Vittor Pisani"
 prodotti_catturati_raw = []
 visti_json = set()
 
-# Variabile per tracciare da dove viene il prodotto
-stato_scraper = {"current_fonte": "volantino"}
+# Traccia la fonte e il nome del volantino corrente
+stato_scraper = {"current_fonte": "volantino", "current_volantino": ""}
 
 def esplora_json_ricorsivo(dato):
     if isinstance(dato, dict):
@@ -27,6 +27,7 @@ def esplora_json_ricorsivo(dato):
             if firma not in visti_json:
                 visti_json.add(firma)
                 dato['custom_fonte'] = stato_scraper["current_fonte"]
+                dato['custom_volantino_nome'] = stato_scraper["current_volantino"]
                 prodotti_catturati_raw.append(dato)
         
         for valore in dato.values():
@@ -109,11 +110,19 @@ async def run_scraper():
             }''')
             
             for url in set(urls_volantini):
-                print(f"-> Sfoglio: {url}")
+                # Estrae il vero nome del volantino dal link!
+                try:
+                    nome_estratto = url.split("volantino-digitale.")[-1].replace(".html", "").replace("-", " ").upper()
+                except:
+                    nome_estratto = "OFFERTE MISTE"
+                    
+                stato_scraper["current_volantino"] = nome_estratto
+                print(f"-> Sfoglio: {nome_estratto}")
+                
                 try:
                     await page.goto(url, timeout=45000)
                     await asyncio.sleep(4)
-                    for _ in range(40): # Scorre fino a 40 pagine di volantino per non perdere NIENTE!
+                    for _ in range(30): 
                         try:
                             btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
                             if await btn.is_visible(timeout=1000):
@@ -130,9 +139,11 @@ async def run_scraper():
         except Exception as e:
             print(f"Errore Volantini: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO (PER LA RICERCA) ----
+        # ---- FASE 2: E-COMMERCE SPECIFICO ----
         print("🛒 FASE 2: Esplorazione Categorie Scontate E-Commerce")
         stato_scraper["current_fonte"] = "sito"
+        stato_scraper["current_volantino"] = "" # Azzeriamo il nome, qui prenderemo la roba generica
+        
         reparti = [
             "https://spesaonline.esselunga.it/store/promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni",
@@ -145,7 +156,7 @@ async def run_scraper():
             try:
                 await page.goto(rep_url, timeout=45000)
                 await asyncio.sleep(4)
-                for _ in range(20): # Scende la pagina per 20 volte!
+                for _ in range(15): 
                     await page.evaluate("window.scrollBy(0, 2000);")
                     await asyncio.sleep(2)
                     try:
@@ -160,7 +171,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE E SALVATAGGIO ----
+    # ---- ELABORAZIONE FINALE ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -184,7 +195,6 @@ async def run_scraper():
 
         chiave_nome = str(nome).strip().lower()
 
-        # PREVIENE DOPPIONI: I volantini vengono prima, quindi il sito non li sovrascrive
         if chiave_nome not in nomi_inseriti:
             nomi_inseriti.add(chiave_nome)
             
@@ -200,7 +210,6 @@ async def run_scraper():
                     break
 
             req_tessera = 'fidaty' in raw_str or 'fìdaty' in raw_str or 'loyalty' in raw_str
-            fonte_originale = raw.get('custom_fonte', 'volantino')
             
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
@@ -213,7 +222,8 @@ async def run_scraper():
                 "data_fine": data_fine,
                 "richiede_tessera": req_tessera,
                 "dati_grezzi_completi": raw,
-                "fonte": fonte_originale
+                "fonte": raw.get('custom_fonte', 'volantino'),
+                "volantino_nome": raw.get('custom_volantino_nome', '') # Aggiunto il nome estratto!
             })
 
     dati_da_salvare = {

@@ -44,7 +44,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO 🚀")
+    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Sicura Originale) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -52,50 +52,69 @@ async def run_scraper():
         page.on("response", cattura_traffico)
 
         try:
-            print("📍 Inserimento Indirizzo...")
-            await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
-            await asyncio.sleep(4)
+            print("➡️ Navigazione verso la HOMEPAGE principale...")
+            await page.goto("https://spesaonline.esselunga.it/", timeout=60000, wait_until="domcontentloaded")
+            await asyncio.sleep(4) 
+            
             try:
                 await page.locator("text=/Accetta/i").locator("visible=true").first.click(timeout=3000)
             except:
                 pass
 
+            print("📍 Apro la schermata di inserimento indirizzo...")
             btn_verifica = page.locator("text=/VERIFICA INDIRIZZO/i").locator("visible=true").first
+            await btn_verifica.wait_for(state="visible", timeout=8000)
             await btn_verifica.click()
+            
+            await page.locator("input").locator("visible=true").first.wait_for(state="visible", timeout=8000)
             await asyncio.sleep(2) 
             
             inputs_visibili = page.locator("input").locator("visible=true")
             count = await inputs_visibili.count()
+            
             if count >= 2:
-                await inputs_visibili.nth(count - 2).click(force=True)
+                cap_index = count - 2
+                via_index = count - 1
+                
+                print(f"✍️ Inserisco CAP: {CAP_UTENTE}")
+                await inputs_visibili.nth(cap_index).click(force=True)
                 await page.keyboard.type(CAP_UTENTE, delay=100)
                 await asyncio.sleep(1)
-                await inputs_visibili.nth(count - 1).click(force=True)
+
+                print(f"✍️ Inserisco VIA: {VIA_UTENTE}")
+                await inputs_visibili.nth(via_index).click(force=True)
                 await page.keyboard.type(VIA_UTENTE, delay=100)
-                await asyncio.sleep(3) 
+                
+                await asyncio.sleep(4) 
+                
                 await page.keyboard.press("Space")
                 await asyncio.sleep(0.5)
                 await page.keyboard.press("Backspace")
                 await asyncio.sleep(2)
+
                 await page.keyboard.press("ArrowDown")
                 await asyncio.sleep(1)
                 await page.keyboard.press("Enter")
                 await asyncio.sleep(2)
+
                 try:
-                    await page.locator("button:has-text('cerca')").locator("visible=true").first.click(timeout=3000)
+                    btn_cerca = page.locator("button:has-text('cerca')").locator("visible=true").first
+                    await btn_cerca.click(timeout=3000)
                 except:
                     await page.keyboard.press("Enter")
                 await asyncio.sleep(4) 
+                
                 try:
-                    await page.locator("text=/ESSELUNGA A CASA/i").locator("visible=true").first.click(force=True, timeout=5000)
+                    btn_casa = page.locator("text=/ESSELUNGA A CASA/i").locator("visible=true").first
+                    await btn_casa.click(force=True, timeout=5000)
                 except:
                     pass
-                await asyncio.sleep(5) 
-        except Exception:
-            pass
+                await asyncio.sleep(8) 
+        except Exception as e:
+            print(f"⚠️ Bypass fallito, ma continuo: {e}")
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
-        print("📖 FASE 1: Sfogliamento Volantini Digitali (inclusi quelli in arrivo)")
+        print("📖 FASE 1: Sfogliamento Volantini Digitali")
         stato_scraper["current_fonte"] = "volantino"
         try:
             await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000)
@@ -119,17 +138,8 @@ async def run_scraper():
                     await page.goto(url, timeout=45000)
                     await asyncio.sleep(4)
                     for _ in range(30): 
-                        try:
-                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
-                            if await btn.is_visible(timeout=1000):
-                                await btn.click()
-                                await asyncio.sleep(1.5)
-                            else:
-                                await page.evaluate("window.scrollBy(0, 1000);")
-                                await asyncio.sleep(1)
-                        except:
-                            await page.evaluate("window.scrollBy(0, 1000);")
-                            await asyncio.sleep(1)
+                        await page.keyboard.press("ArrowRight")
+                        await asyncio.sleep(1)
                 except:
                     pass
         except Exception as e:
@@ -154,7 +164,7 @@ async def run_scraper():
             try:
                 await page.goto(rep_url, timeout=45000)
                 await asyncio.sleep(5) 
-                for _ in range(25): 
+                for _ in range(20): 
                     await page.evaluate("window.scrollBy(0, 2000);")
                     await asyncio.sleep(2.5) 
                     try:

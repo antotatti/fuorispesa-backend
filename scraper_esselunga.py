@@ -12,7 +12,7 @@ VIA_UTENTE = "Via Vittor Pisani"
 
 # LE TUE CHIAVI SUPABASE
 SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDYyMTIzNywiZXhwIjoyMTAwMTk3MjM3fQ.6RL8T4JpoM3ohwNE3l6c2Y0_M9sQoPDDP4zs5jSizUU"
 # =======================================================
 
 prodotti_catturati_raw = []

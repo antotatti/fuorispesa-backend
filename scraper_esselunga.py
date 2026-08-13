@@ -44,7 +44,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Sicura Originale) 🚀")
+    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -52,16 +52,14 @@ async def run_scraper():
         page.on("response", cattura_traffico)
 
         try:
-            print("➡️ Navigazione verso la HOMEPAGE principale...")
-            await page.goto("https://spesaonline.esselunga.it/", timeout=60000, wait_until="domcontentloaded")
-            await asyncio.sleep(4) 
-            
+            print("📍 Inserimento Indirizzo (Modalità Sicura Iniziale)...")
+            await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
+            await asyncio.sleep(4)
             try:
                 await page.locator("text=/Accetta/i").locator("visible=true").first.click(timeout=3000)
             except:
                 pass
 
-            print("📍 Apro la schermata di inserimento indirizzo...")
             btn_verifica = page.locator("text=/VERIFICA INDIRIZZO/i").locator("visible=true").first
             await btn_verifica.wait_for(state="visible", timeout=8000)
             await btn_verifica.click()
@@ -109,25 +107,25 @@ async def run_scraper():
                     await btn_casa.click(force=True, timeout=5000)
                 except:
                     pass
-                await asyncio.sleep(8) 
+                await asyncio.sleep(5) 
         except Exception as e:
-            print(f"⚠️ Bypass fallito, ma continuo: {e}")
+            print(f"⚠️ Indirizzo Fallito: {e}")
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
-        print("📖 FASE 1: Sfogliamento Volantini Digitali")
+        print("📖 FASE 1: Ricerca e Sfogliamento Volantini Digitali")
         stato_scraper["current_fonte"] = "volantino"
         try:
             await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000)
             await asyncio.sleep(4)
             urls_volantini = await page.evaluate('''() => {
-                return Array.from(document.querySelectorAll('a'))
-                    .map(a => a.href)
-                    .filter(href => href.includes('volantino-digitale'));
+                const links = Array.from(document.querySelectorAll('a'));
+                return links.map(a => a.href).filter(href => href.includes('volantino-digitale'));
             }''')
             
             for url in set(urls_volantini):
                 try:
                     nome_estratto = url.split("volantino-digitale.")[-1].replace(".html", "").replace("-", " ").upper()
+                    nome_estratto = nome_estratto.replace("%20", " ")
                 except:
                     nome_estratto = "OFFERTE MISTE"
                     
@@ -137,16 +135,25 @@ async def run_scraper():
                 try:
                     await page.goto(url, timeout=45000)
                     await asyncio.sleep(4)
-                    for _ in range(30): 
-                        await page.keyboard.press("ArrowRight")
-                        await asyncio.sleep(1)
+                    for _ in range(40): 
+                        try:
+                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
+                            if await btn.is_visible(timeout=1000):
+                                await btn.click()
+                                await asyncio.sleep(1.5)
+                            else:
+                                await page.evaluate("window.scrollBy(0, 1500);")
+                                await asyncio.sleep(1)
+                        except:
+                            await page.evaluate("window.scrollBy(0, 1500);")
+                            await asyncio.sleep(1)
                 except:
                     pass
         except Exception as e:
-            print(f"Errore Volantini: {e}")
+            print(f"⚠️ Nessun Volantino Trovato: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO (CON FRUTTA E PIZZA) ----
-        print("🛒 FASE 2: Esplorazione Categorie Scontate E-Commerce")
+        # ---- FASE 2: E-COMMERCE SPECIFICO (CON TUTTE LE CATEGORIE) ----
+        print("🛒 FASE 2: Caricamento Intero Catalogo Promozionale")
         stato_scraper["current_fonte"] = "sito"
         stato_scraper["current_volantino"] = "" 
         
@@ -156,20 +163,24 @@ async def run_scraper():
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-persona/260723?filtri=promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/cura-della-casa/260722?filtri=promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/frutta-e-verdura/260713?filtri=promozioni",
-            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/gastronomia-e-piatti-pronti/260716?filtri=promozioni"
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/gastronomia-e-piatti-pronti/260716?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/carne/260714?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/pesce/260715?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/dispensa/260718?filtri=promozioni",
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/colazione/260719?filtri=promozioni"
         ]
         
         for rep_url in reparti:
-            print(f"-> Navigo in: {rep_url}")
+            print(f"-> Accesso profondo: {rep_url}")
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(5) 
-                for _ in range(20): 
-                    await page.evaluate("window.scrollBy(0, 2000);")
-                    await asyncio.sleep(2.5) 
+                await asyncio.sleep(5)
+                for _ in range(40): 
+                    await page.evaluate("window.scrollBy(0, 1500);")
+                    await asyncio.sleep(2) 
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
-                        if await btn.is_visible(timeout=500):
+                        if await btn.is_visible(timeout=1000):
                             await btn.click(force=True)
                             await asyncio.sleep(3)
                     except:
@@ -179,7 +190,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE E SALVATAGGIO ----
+    # ---- ELABORAZIONE FINALE E CREAZIONE DATABASE ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -246,7 +257,7 @@ async def run_scraper():
     with open('esselunga_offerte.json', 'w', encoding='utf-8') as f:
         json.dump(dati_da_salvare, f, indent=4, ensure_ascii=False)
         
-    print(f"🎯 PROCESSO COMPLETATO! Salvati {len(prodotti_finali)} prodotti totali.")
+    print(f"🎯 TUTTO COMPLETATO! Rilevati e compilati {len(prodotti_finali)} prodotti totali.")
 
 if __name__ == "__main__":
     asyncio.run(run_scraper())

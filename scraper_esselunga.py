@@ -3,11 +3,16 @@ from playwright.async_api import async_playwright
 import json
 import uuid
 import re
+import urllib.request
 from datetime import datetime
 
 # =======================================================
 CAP_UTENTE = "20124"
 VIA_UTENTE = "Via Vittor Pisani"
+
+# LE TUE CHIAVI SUPABASE
+SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
 # =======================================================
 
 prodotti_catturati_raw = []
@@ -44,7 +49,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO 🚀")
+    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Database) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -52,7 +57,7 @@ async def run_scraper():
         page.on("response", cattura_traffico)
 
         try:
-            print("📍 Inserimento Indirizzo (Modalità Sicura Iniziale)...")
+            print("📍 Inserimento Indirizzo (Modalità Sicura)...")
             await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
             await asyncio.sleep(4)
             try:
@@ -74,22 +79,18 @@ async def run_scraper():
                 cap_index = count - 2
                 via_index = count - 1
                 
-                print(f"✍️ Inserisco CAP: {CAP_UTENTE}")
                 await inputs_visibili.nth(cap_index).click(force=True)
                 await page.keyboard.type(CAP_UTENTE, delay=100)
                 await asyncio.sleep(1)
 
-                print(f"✍️ Inserisco VIA: {VIA_UTENTE}")
                 await inputs_visibili.nth(via_index).click(force=True)
                 await page.keyboard.type(VIA_UTENTE, delay=100)
-                
-                await asyncio.sleep(4) 
+                await asyncio.sleep(3) 
                 
                 await page.keyboard.press("Space")
                 await asyncio.sleep(0.5)
                 await page.keyboard.press("Backspace")
                 await asyncio.sleep(2)
-
                 await page.keyboard.press("ArrowDown")
                 await asyncio.sleep(1)
                 await page.keyboard.press("Enter")
@@ -152,7 +153,7 @@ async def run_scraper():
         except Exception as e:
             print(f"⚠️ Nessun Volantino Trovato: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO (CON TUTTE LE CATEGORIE) ----
+        # ---- FASE 2: E-COMMERCE SPECIFICO (CON FRUTTA E PIZZA) ----
         print("🛒 FASE 2: Caricamento Intero Catalogo Promozionale")
         stato_scraper["current_fonte"] = "sito"
         stato_scraper["current_volantino"] = "" 
@@ -190,7 +191,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE E CREAZIONE DATABASE ----
+    # ---- ELABORAZIONE FINALE ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -246,18 +247,39 @@ async def run_scraper():
                 "volantino_nome": raw.get('custom_volantino_nome', '')
             })
 
-    dati_da_salvare = {
-        "metadata": {
-            "data_scansione": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "prodotti_totali": len(prodotti_finali)
-        },
-        "prodotti": prodotti_finali
+    # ---- INVIO DEI DATI A SUPABASE IN MODO SICURO ----
+    print(f"🌐 Inizio invio di {len(prodotti_finali)} prodotti a Supabase...")
+    
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json",
+        "Prefer": "resolution=merge-duplicates"
     }
 
-    with open('esselunga_offerte.json', 'w', encoding='utf-8') as f:
-        json.dump(dati_da_salvare, f, indent=4, ensure_ascii=False)
+    # 1. Eliminiamo i vecchi prodotti per evitare accumuli di roba scaduta
+    try:
+        url_delete = f"{SUPABASE_URL}/rest/v1/prodotti?id=not.is.null"
+        req_del = urllib.request.Request(url_delete, headers=headers, method='DELETE')
+        with urllib.request.urlopen(req_del) as response:
+            print("🧹 Vecchio Database Cloud pulito con successo.")
+    except Exception as e:
+        print(f"⚠️ Nota: pulizia saltata o impossibile: {e}")
+
+    # 2. Inseriamo i nuovi prodotti a pacchetti di 500 per non intasare la rete
+    chunk_size = 500
+    for i in range(0, len(prodotti_finali), chunk_size):
+        chunk = prodotti_finali[i:i+chunk_size]
+        url_insert = f"{SUPABASE_URL}/rest/v1/prodotti"
         
-    print(f"🎯 TUTTO COMPLETATO! Rilevati e compilati {len(prodotti_finali)} prodotti totali.")
+        req_ins = urllib.request.Request(url_insert, data=json.dumps(chunk).encode('utf-8'), headers=headers, method='POST')
+        try:
+            with urllib.request.urlopen(req_ins) as response:
+                print(f"✅ Inseriti {len(chunk)} prodotti con successo (Blocco {i//chunk_size + 1})!")
+        except Exception as e:
+            print(f"❌ Errore durante l'inserimento su Supabase: {e}")
+            
+    print("🎯 PROCESSO COMPLETATO TOTALMENTE!")
 
 if __name__ == "__main__":
     asyncio.run(run_scraper())

@@ -3,8 +3,8 @@ from playwright.async_api import async_playwright
 import json
 import uuid
 import re
-import urllib.request
 from datetime import datetime
+import urllib.request
 
 # =======================================================
 CAP_UTENTE = "20124"
@@ -12,7 +12,7 @@ VIA_UTENTE = "Via Vittor Pisani"
 
 # LE TUE CHIAVI SUPABASE
 SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDYyMTIzNywiZXhwIjoyMTAwMTk3MjM3fQ.6RL8T4JpoM3ohwNE3l6c2Y0_M9sQoPDDP4zs5jSizUU"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
 # =======================================================
 
 prodotti_catturati_raw = []
@@ -49,7 +49,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Database) 🚀")
+    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Anti-Bot Lenta) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -110,7 +110,7 @@ async def run_scraper():
                     pass
                 await asyncio.sleep(5) 
         except Exception as e:
-            print(f"⚠️ Indirizzo Fallito: {e}")
+            print(f"⚠️ Bypass fallito: {e}")
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
         print("📖 FASE 1: Ricerca e Sfogliamento Volantini Digitali")
@@ -136,24 +136,25 @@ async def run_scraper():
                 try:
                     await page.goto(url, timeout=45000)
                     await asyncio.sleep(4)
-                    for _ in range(40): 
+                    for _ in range(35): 
                         try:
-                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
+                            # Prova a cliccare il pulsante avanti, altrimenti clicca a destra per girare pagina forzatamente
+                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti'], .flipbook-nav-next").first
                             if await btn.is_visible(timeout=1000):
                                 await btn.click()
-                                await asyncio.sleep(1.5)
+                                await asyncio.sleep(2)
                             else:
-                                await page.evaluate("window.scrollBy(0, 1500);")
-                                await asyncio.sleep(1)
+                                await page.mouse.click(1200, 400)
+                                await asyncio.sleep(2)
                         except:
-                            await page.evaluate("window.scrollBy(0, 1500);")
-                            await asyncio.sleep(1)
+                            await page.mouse.click(1200, 400)
+                            await asyncio.sleep(2)
                 except:
                     pass
         except Exception as e:
             print(f"⚠️ Nessun Volantino Trovato: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO (CON FRUTTA E PIZZA) ----
+        # ---- FASE 2: E-COMMERCE SPECIFICO (LENTO E PROFONDO) ----
         print("🛒 FASE 2: Caricamento Intero Catalogo Promozionale")
         stato_scraper["current_fonte"] = "sito"
         stato_scraper["current_volantino"] = "" 
@@ -175,15 +176,17 @@ async def run_scraper():
             print(f"-> Accesso profondo: {rep_url}")
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(5)
-                for _ in range(40): 
-                    await page.evaluate("window.scrollBy(0, 1500);")
-                    await asyncio.sleep(2) 
+                await asyncio.sleep(5) 
+                
+                # Sostituito lo scrolling casuale con lo scroll fino alla fine esatta della pagina
+                for _ in range(15): 
+                    await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
+                    await asyncio.sleep(3) 
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
-                        if await btn.is_visible(timeout=1000):
+                        if await btn.is_visible(timeout=2000):
                             await btn.click(force=True)
-                            await asyncio.sleep(3)
+                            await asyncio.sleep(4)
                     except:
                         pass
             except:
@@ -257,16 +260,14 @@ async def run_scraper():
         "Prefer": "resolution=merge-duplicates"
     }
 
-    # 1. Eliminiamo i vecchi prodotti per evitare accumuli di roba scaduta
     try:
         url_delete = f"{SUPABASE_URL}/rest/v1/prodotti?id=not.is.null"
         req_del = urllib.request.Request(url_delete, headers=headers, method='DELETE')
         with urllib.request.urlopen(req_del) as response:
             print("🧹 Vecchio Database Cloud pulito con successo.")
     except Exception as e:
-        print(f"⚠️ Nota: pulizia saltata o impossibile: {e}")
+        pass
 
-    # 2. Inseriamo i nuovi prodotti a pacchetti di 500 per non intasare la rete
     chunk_size = 500
     for i in range(0, len(prodotti_finali), chunk_size):
         chunk = prodotti_finali[i:i+chunk_size]

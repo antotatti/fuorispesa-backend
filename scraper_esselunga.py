@@ -3,8 +3,8 @@ from playwright.async_api import async_playwright
 import json
 import uuid
 import re
-from datetime import datetime
 import urllib.request
+from datetime import datetime
 
 # =======================================================
 CAP_UTENTE = "20124"
@@ -49,7 +49,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SUPER SPIDER ESSELUNGA IBRIDO (Modalità Anti-Bot Lenta) 🚀")
+    print("🚀 AVVIO SUPER SPIDER ESSELUNGA (Modalità Sicura Anti-Bot) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -57,7 +57,7 @@ async def run_scraper():
         page.on("response", cattura_traffico)
 
         try:
-            print("📍 Inserimento Indirizzo (Modalità Sicura)...")
+            print("📍 Inserimento Indirizzo...")
             await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
             await asyncio.sleep(4)
             try:
@@ -80,11 +80,11 @@ async def run_scraper():
                 via_index = count - 1
                 
                 await inputs_visibili.nth(cap_index).click(force=True)
-                await page.keyboard.type(CAP_UTENTE, delay=100)
+                await page.keyboard.type(CAP_UTENTE, delay=150)
                 await asyncio.sleep(1)
 
                 await inputs_visibili.nth(via_index).click(force=True)
-                await page.keyboard.type(VIA_UTENTE, delay=100)
+                await page.keyboard.type(VIA_UTENTE, delay=150)
                 await asyncio.sleep(3) 
                 
                 await page.keyboard.press("Space")
@@ -110,7 +110,7 @@ async def run_scraper():
                     pass
                 await asyncio.sleep(5) 
         except Exception as e:
-            print(f"⚠️ Bypass fallito: {e}")
+            print(f"⚠️ Indirizzo Fallito: {e}")
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
         print("📖 FASE 1: Ricerca e Sfogliamento Volantini Digitali")
@@ -131,15 +131,15 @@ async def run_scraper():
                     nome_estratto = "OFFERTE MISTE"
                     
                 stato_scraper["current_volantino"] = nome_estratto
-                print(f"-> Sfoglio: {nome_estratto}")
+                print(f"-> Sfoglio Volantino: {nome_estratto}")
                 
                 try:
                     await page.goto(url, timeout=45000)
-                    await asyncio.sleep(4)
-                    for _ in range(35): 
+                    await asyncio.sleep(5)
+                    for _ in range(40): 
                         try:
-                            # Prova a cliccare il pulsante avanti, altrimenti clicca a destra per girare pagina forzatamente
-                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti'], .flipbook-nav-next").first
+                            # Cerca bottone avanti, se non c'è clicca a destra per girare
+                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti']").first
                             if await btn.is_visible(timeout=1000):
                                 await btn.click()
                                 await asyncio.sleep(2)
@@ -152,10 +152,10 @@ async def run_scraper():
                 except:
                     pass
         except Exception as e:
-            print(f"⚠️ Nessun Volantino Trovato: {e}")
+            print(f"⚠️ Nessun Volantino: {e}")
 
-        # ---- FASE 2: E-COMMERCE SPECIFICO (LENTO E PROFONDO) ----
-        print("🛒 FASE 2: Caricamento Intero Catalogo Promozionale")
+        # ---- FASE 2: E-COMMERCE SPECIFICO (CON ATTESE LUNGHE ANTI-BOT) ----
+        print("🛒 FASE 2: Caricamento Intero Catalogo Promozionale (Lento)")
         stato_scraper["current_fonte"] = "sito"
         stato_scraper["current_volantino"] = "" 
         
@@ -168,18 +168,17 @@ async def run_scraper():
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/gastronomia-e-piatti-pronti/260716?filtri=promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/carne/260714?filtri=promozioni",
             "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/pesce/260715?filtri=promozioni",
-            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/dispensa/260718?filtri=promozioni",
-            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/colazione/260719?filtri=promozioni"
+            "https://spesaonline.esselunga.it/commerce/nav/supermercato/store/dispensa/260718?filtri=promozioni"
         ]
         
         for rep_url in reparti:
             print(f"-> Accesso profondo: {rep_url}")
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(5) 
+                await asyncio.sleep(6) 
                 
-                # Sostituito lo scrolling casuale con lo scroll fino alla fine esatta della pagina
-                for _ in range(15): 
+                # Usiamo scroll "umani"
+                for _ in range(25): 
                     await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
                     await asyncio.sleep(3) 
                     try:
@@ -194,7 +193,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE ----
+    # ---- ELABORAZIONE FINALE E CREAZIONE DATABASE ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -232,8 +231,16 @@ async def run_scraper():
                     img_url = v
                     break
 
-            req_tessera = 'fidaty' in raw_str or 'fìdaty' in raw_str or 'loyalty' in raw_str
+            # FIX: Verifica infallibile della tessera Fìdaty
+            parole_tessera = ['fidaty', 'fìdaty', 'fidelity', 'tessera', 'carta', 'soci']
+            req_tessera = any(parola in raw_str for parola in parole_tessera)
+            
             fonte_originale = raw.get('custom_fonte', 'volantino')
+            
+            # FIX: Estrazione nome volantino
+            nome_vol = raw.get('custom_volantino_nome', '')
+            if not nome_vol:
+                nome_vol = raw.get('promotionname', raw.get('catalogname', ''))
             
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
@@ -247,7 +254,7 @@ async def run_scraper():
                 "richiede_tessera": req_tessera,
                 "dati_grezzi_completi": raw,
                 "fonte": fonte_originale,
-                "volantino_nome": raw.get('custom_volantino_nome', '')
+                "volantino_nome": str(nome_vol)
             })
 
     # ---- INVIO DEI DATI A SUPABASE IN MODO SICURO ----

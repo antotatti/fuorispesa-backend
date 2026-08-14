@@ -10,7 +10,7 @@ from datetime import datetime
 CAP_UTENTE = "20124"
 VIA_UTENTE = "Via Vittor Pisani"
 
-# CHIAVI SUPABASE
+# LE TUE CHIAVI SUPABASE
 SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
 # =======================================================
@@ -30,7 +30,7 @@ def esplora_json_ricorsivo(dato):
             if firma not in visti_json:
                 visti_json.add(firma)
                 
-                # INIETTOAMO A FORZA IL NOME DEL VOLANTINO
+                # Inserimento esplicito dei campi
                 dato['custom_fonte'] = stato_scraper["current_fonte"]
                 dato['custom_volantino_nome'] = stato_scraper["current_volantino"]
                 prodotti_catturati_raw.append(dato)
@@ -51,7 +51,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SPIDER ESSELUNGA (Fix Nomi e Tessere) 🚀")
+    print("🚀 AVVIO SPIDER ESSELUNGA 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -82,11 +82,11 @@ async def run_scraper():
                 via_index = count - 1
                 
                 await inputs_visibili.nth(cap_index).click(force=True)
-                await page.keyboard.type(CAP_UTENTE, delay=100)
+                await page.keyboard.type(CAP_UTENTE, delay=150)
                 await asyncio.sleep(1)
 
                 await inputs_visibili.nth(via_index).click(force=True)
-                await page.keyboard.type(VIA_UTENTE, delay=100)
+                await page.keyboard.type(VIA_UTENTE, delay=150)
                 await asyncio.sleep(3) 
                 
                 await page.keyboard.press("Space")
@@ -112,13 +112,52 @@ async def run_scraper():
                     pass
                 await asyncio.sleep(5) 
         except Exception as e:
-            print(f"⚠️ Bypass fallito: {e}")
+            print(f"⚠️ Indirizzo Fallito: {e}")
 
-        # ---- E-COMMERCE SPECIFICO (NOMI VOLANTINI FORZATI) ----
-        print("🛒 Esplorazione Catalogo e Assegnazione Nomi Volantino")
+        # ---- FASE 1: VOLANTINI DIGITALI ----
+        print("📖 FASE 1: Sfogliamento Volantini")
+        stato_scraper["current_fonte"] = "volantino"
+        try:
+            await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000)
+            await asyncio.sleep(4)
+            urls_volantini = await page.evaluate('''() => {
+                const links = Array.from(document.querySelectorAll('a'));
+                return links.map(a => a.href).filter(href => href.includes('volantino-digitale'));
+            }''')
+            
+            for url in set(urls_volantini):
+                try:
+                    nome_estratto = url.split("volantino-digitale.")[-1].replace(".html", "").replace("-", " ").upper()
+                    nome_estratto = nome_estratto.replace("%20", " ")
+                except:
+                    nome_estratto = "OFFERTE MISTE"
+                    
+                stato_scraper["current_volantino"] = nome_estratto
+                
+                try:
+                    await page.goto(url, timeout=45000)
+                    await asyncio.sleep(5)
+                    for _ in range(40): 
+                        try:
+                            btn = page.locator(".swiper-button-next, button[aria-label*='Avanti'], .flipbook-nav-next").first
+                            if await btn.is_visible(timeout=1000):
+                                await btn.click()
+                                await asyncio.sleep(2)
+                            else:
+                                await page.mouse.click(1200, 400)
+                                await asyncio.sleep(2)
+                        except:
+                            await page.mouse.click(1200, 400)
+                            await asyncio.sleep(2)
+                except:
+                    pass
+        except Exception as e:
+            print(f"⚠️ Nessun Volantino: {e}")
+
+        # ---- FASE 2: E-COMMERCE ----
+        print("🛒 FASE 2: Catalogo E-commerce")
         stato_scraper["current_fonte"] = "sito"
         
-        # Mappa esatta di URL e Titolo del Volantino che apparirà nell'app
         reparti = [
             ("https://spesaonline.esselunga.it/store/promozioni", "OFFERTE MISTE GENERALI"),
             ("https://spesaonline.esselunga.it/commerce/nav/supermercato/store/amici-animali/260724?filtri=promozioni", "SPECIALE AMICI ANIMALI"),
@@ -132,23 +171,20 @@ async def run_scraper():
         ]
         
         for rep_url, nome_vol in reparti:
-            print(f"-> Navigo in: {nome_vol}")
-            # FORZIAMO IL NOME DEL VOLANTINO
             stato_scraper["current_volantino"] = nome_vol
             
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(5) 
+                await asyncio.sleep(6) 
                 
-                # Scroll lento per ingannare i blocchi Esselunga
                 for _ in range(25): 
                     await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
-                    await asyncio.sleep(2.5) 
+                    await asyncio.sleep(3) 
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
-                        if await btn.is_visible(timeout=500):
+                        if await btn.is_visible(timeout=2000):
                             await btn.click(force=True)
-                            await asyncio.sleep(3)
+                            await asyncio.sleep(4)
                     except:
                         pass
             except:
@@ -156,7 +192,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- CREAZIONE DATABASE ----
+    # ---- CREAZIONE DATABASE PER SUPABASE ----
     prodotti_finali = []
     nomi_inseriti = set()
 
@@ -194,13 +230,15 @@ async def run_scraper():
                     img_url = v
                     break
 
-            # FIX TESSERA: Check potentissimo. Basta una di queste parole per far accendere il logo "Con Tessera"
+            # FIX TESSERA DEFINITIVO
             parole_tessera = ['fidaty', 'fìdaty', 'fidelity', 'tessera', 'carta', 'soci', 'sconto cassa']
             req_tessera = any(parola in raw_str for parola in parole_tessera)
             
-            # RECUPERO DEL NOME VOLANTINO SALVATO
+            # FIX NOME VOLANTINO DEFINITIVO
             fonte_originale = raw.get('custom_fonte', 'volantino')
-            nome_vol_finale = raw.get('custom_volantino_nome', 'OFFERTE GENERALI')
+            nome_vol_finale = raw.get('custom_volantino_nome')
+            if not nome_vol_finale:
+                nome_vol_finale = raw.get('promotionname', raw.get('catalogname', 'OFFERTE GENERALI'))
             
             prodotti_finali.append({
                 "id": str(uuid.uuid4())[:8],
@@ -211,15 +249,13 @@ async def run_scraper():
                 "categoria": "Esselunga",
                 "data_inizio": data_inizio,
                 "data_fine": data_fine,
-                "richiede_tessera": req_tessera, # <--- QUI ORA SARÀ TRUE O FALSE GIUSTO
+                "richiede_tessera": req_tessera,
                 "dati_grezzi_completi": raw,
                 "fonte": fonte_originale,
-                "volantino_nome": str(nome_vol_finale) # <--- QUI CI SARÀ IL NOME CORRETTO
+                "volantino_nome": str(nome_vol_finale)
             })
 
     # ---- INVIO A SUPABASE ----
-    print(f"🌐 Inizio invio di {len(prodotti_finali)} prodotti a Supabase...")
-    
     headers = {
         "apikey": SUPABASE_KEY,
         "Authorization": f"Bearer {SUPABASE_KEY}",

@@ -15,12 +15,11 @@ VIA_UTENTE = "Via Vittor Pisani"
 SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
 
-# LA TUA CHIAVE PROXY (ScraperAPI)
-SCRAPER_API_KEY = "84c172c47e7f1aa7d5ce0cba4fea8497"
-
-# FIX: Attiviamo premium=true per usare la rete ultraveloce residenziale e aggirare il blocco 401
-session_id = random.randint(100000, 999999)
-PROXY_USER = f"scraperapi.country_code=it.premium=true.session_number={session_id}"
+# I TUOI DATI PROXY WEBSHARE (Gratis a vita)
+PROXY_HOST = "31.59.20.176" 
+PROXY_PORT = "6754"         
+PROXY_USER = "vdzdovez"
+PROXY_PASS = "k8tmns8faxzo"
 # =======================================================
 
 prodotti_dict = {}
@@ -60,14 +59,14 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print(f"🚀 AVVIO SPIDER ESSELUNGA (Proxy PREMIUM Italia, Sessione Fissa: {session_id}) 🚀")
+    print(f"🚀 AVVIO SPIDER ESSELUNGA (GHOST MODE + WEBSHARE) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(
             headless=True,
             proxy={
-                "server": "http://proxy-server.scraperapi.com:8001",
+                "server": f"http://{PROXY_HOST}:{PROXY_PORT}",
                 "username": PROXY_USER,
-                "password": SCRAPER_API_KEY
+                "password": PROXY_PASS
             },
             args=[
                 "--disable-blink-features=AutomationControlled",
@@ -80,26 +79,35 @@ async def run_scraper():
             viewport={"width": 1366, "height": 768},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
+        
+        # IL SEGRETO DELLA VELOCITÀ: Blocchiamo il caricamento di immagini, video e font. 
+        # Risparmiamo il 99% della banda Webshare ed evitiamo i Timeout di Esselunga.
+        async def blocca_risorse_inutili(route):
+            if route.request.resource_type in ["image", "media", "font"]:
+                await route.abort()
+            else:
+                await route.continue_()
+
+        await context.route("**/*", blocca_risorse_inutili)
+
         page = await context.new_page()
         page.on("response", cattura_traffico)
 
         try:
-            print("📍 Inserimento Indirizzo (Timeout Aumentato)...")
-            # FIX: Timeout aumentato a 120 secondi per compensare il ritardo del proxy
-            await page.goto("https://spesaonline.esselunga.it/", timeout=120000)
-            await asyncio.sleep(6)
-            
+            print("📍 Inserimento Indirizzo ultra-veloce...")
+            await page.goto("https://spesaonline.esselunga.it/", timeout=90000)
+            await asyncio.sleep(3)
             try:
-                await page.locator("text=/Accetta/i").locator("visible=true").first.click(timeout=5000)
+                await page.locator("text=/Accetta/i").locator("visible=true").first.click(timeout=3000)
             except:
                 pass
 
             btn_verifica = page.locator("text=/VERIFICA INDIRIZZO/i").locator("visible=true").first
-            await btn_verifica.wait_for(state="visible", timeout=15000)
+            await btn_verifica.wait_for(state="visible", timeout=10000)
             await btn_verifica.click()
             
-            await page.locator("input").locator("visible=true").first.wait_for(state="visible", timeout=15000)
-            await asyncio.sleep(3) 
+            await page.locator("input").locator("visible=true").first.wait_for(state="visible", timeout=10000)
+            await asyncio.sleep(1) 
             
             inputs_visibili = page.locator("input").locator("visible=true")
             count = await inputs_visibili.count()
@@ -109,45 +117,45 @@ async def run_scraper():
                 via_index = count - 1
                 
                 await inputs_visibili.nth(cap_index).click(force=True)
-                await page.keyboard.type(CAP_UTENTE, delay=150)
-                await asyncio.sleep(2)
+                await page.keyboard.type(CAP_UTENTE, delay=100)
+                await asyncio.sleep(1)
 
                 await inputs_visibili.nth(via_index).click(force=True)
-                await page.keyboard.type(VIA_UTENTE, delay=150)
-                await asyncio.sleep(4) 
+                await page.keyboard.type(VIA_UTENTE, delay=100)
+                await asyncio.sleep(2) 
                 
                 await page.keyboard.press("Space")
-                await asyncio.sleep(1)
+                await asyncio.sleep(0.5)
                 await page.keyboard.press("Backspace")
-                await asyncio.sleep(2)
+                await asyncio.sleep(1)
                 await page.keyboard.press("ArrowDown")
-                await asyncio.sleep(1.5)
+                await asyncio.sleep(1)
                 await page.keyboard.press("Enter")
-                await asyncio.sleep(3)
+                await asyncio.sleep(2)
 
                 try:
                     btn_cerca = page.locator("button:has-text('cerca')").locator("visible=true").first
-                    await btn_cerca.click(timeout=5000)
+                    await btn_cerca.click(timeout=3000)
                 except:
                     await page.keyboard.press("Enter")
-                await asyncio.sleep(5) 
+                await asyncio.sleep(4) 
                 
                 try:
                     btn_casa = page.locator("text=/ESSELUNGA A CASA/i").locator("visible=true").first
-                    await btn_casa.click(force=True, timeout=8000)
+                    await btn_casa.click(force=True, timeout=5000)
                 except:
                     pass
-                await asyncio.sleep(6) 
+                await asyncio.sleep(4) 
                 print("✅ Indirizzo inserito correttamente!")
         except Exception as e:
-            print(f"⚠️ Bypass Indirizzo Fallito (Questo causa l'errore 401!): {e}")
+            print(f"⚠️ Errore d'inserimento: {e}")
 
         # ---- FASE 1: VOLANTINI DIGITALI ----
-        print("📖 FASE 1: Sfogliamento Volantini")
+        print("📖 FASE 1: Sfogliamento Volantini Fantasma")
         stato_scraper["current_fonte"] = "volantino"
         try:
             await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=90000)
-            await asyncio.sleep(5)
+            await asyncio.sleep(4)
             urls_volantini = await page.evaluate('''() => {
                 const links = Array.from(document.querySelectorAll('a'));
                 return links.map(a => a.href).filter(href => href.includes('volantino-digitale'));
@@ -163,27 +171,27 @@ async def run_scraper():
                 stato_scraper["current_volantino"] = nome_estratto
                 
                 try:
-                    await page.goto(url, timeout=90000)
-                    await asyncio.sleep(5)
+                    await page.goto(url, timeout=60000)
+                    await asyncio.sleep(3)
                     for _ in range(30): 
                         try:
                             btn = page.locator(".swiper-button-next, button[aria-label*='Avanti'], .flipbook-nav-next").first
-                            if await btn.is_visible(timeout=2000):
+                            if await btn.is_visible(timeout=1000):
                                 await btn.click()
-                                await asyncio.sleep(2)
+                                await asyncio.sleep(1.5)
                             else:
                                 await page.mouse.click(1200, 400)
-                                await asyncio.sleep(2)
+                                await asyncio.sleep(1.5)
                         except:
                             await page.mouse.click(1200, 400)
-                            await asyncio.sleep(2)
+                            await asyncio.sleep(1.5)
                 except:
                     pass
         except Exception as e:
             pass
 
         # ---- FASE 2: E-COMMERCE ----
-        print("🛒 FASE 2: Catalogo E-commerce")
+        print("🛒 FASE 2: Catalogo E-commerce Rapido")
         stato_scraper["current_fonte"] = "sito"
         
         reparti = [
@@ -201,18 +209,17 @@ async def run_scraper():
         for rep_url, nome_vol in reparti:
             stato_scraper["current_volantino"] = nome_vol
             try:
-                # FIX: Timeout aumentato per la rete premium
-                await page.goto(rep_url, timeout=120000)
-                await asyncio.sleep(6) 
+                await page.goto(rep_url, timeout=90000)
+                await asyncio.sleep(4) 
                 
                 for _ in range(25): 
                     await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
-                    await asyncio.sleep(3) 
+                    await asyncio.sleep(2) 
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
-                        if await btn.is_visible(timeout=3000):
+                        if await btn.is_visible(timeout=2000):
                             await btn.click(force=True)
-                            await asyncio.sleep(4)
+                            await asyncio.sleep(3)
                     except:
                         pass
             except:
@@ -220,7 +227,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE ----
+    # ---- CREAZIONE DATABASE ----
     prodotti_finali = []
     nomi_inseriti = set()
     lista_grezza = list(prodotti_dict.values())

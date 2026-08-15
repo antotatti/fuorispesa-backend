@@ -10,9 +10,12 @@ from datetime import datetime
 CAP_UTENTE = "20124"
 VIA_UTENTE = "Via Vittor Pisani"
 
-# LE TUE CHIAVI SUPABASE (Inviolabili da fuori)
+# LE TUE CHIAVI SUPABASE
 SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
+
+# LA TUA CHIAVE PROXY (ScraperAPI)
+SCRAPER_API_KEY = "84c172c47e7f1aa7d5ce0cba4fea8497"
 # =======================================================
 
 prodotti_dict = {}
@@ -21,37 +24,29 @@ stato_scraper = {"current_fonte": "volantino", "current_volantino": "OFFERTE GEN
 def esplora_json_ricorsivo(dato):
     if isinstance(dato, dict):
         chiavi = {k.lower(): v for k, v in dato.items()}
-        
-        # Cerchiamo le strutture API standard dei prodotti
         ha_nome = 'name' in chiavi or 'nome' in chiavi or 'title' in chiavi or 'description' in chiavi
         ha_prezzo = 'price' in chiavi or 'prezzo' in chiavi or 'currentprice' in chiavi or 'discountedprice' in chiavi
         
         if ha_nome and ha_prezzo:
-            # Creiamo una firma unica per evitare doppioni
             firma = str(chiavi.get('name', '')) + "_" + str(chiavi.get('price', ''))
             
-            # Se il prodotto non esiste, lo registriamo con l'etichetta del volantino attuale
             if firma not in prodotti_dict:
                 dato['custom_fonte'] = stato_scraper["current_fonte"]
                 dato['custom_volantino_nome'] = stato_scraper["current_volantino"]
                 prodotti_dict[firma] = dato
             else:
-                # Se lo conoscevamo già ma non aveva un nome volantino, lo aggiorniamo!
                 if stato_scraper["current_volantino"] not in ["", "OFFERTE GENERALI", "OFFERTE MISTE"]:
                     prodotti_dict[firma]['custom_volantino_nome'] = stato_scraper["current_volantino"]
                     prodotti_dict[firma]['custom_fonte'] = stato_scraper["current_fonte"]
         
-        # Esploriamo a cascata le risposte API
         for valore in dato.values():
             esplora_json_ricorsivo(valore)
     elif isinstance(dato, list):
         for item in dato:
             esplora_json_ricorsivo(item)
 
-# Intercettatore di Rete: Cattura silenziosamente tutto il traffico API JSON
 async def cattura_traffico(response):
     if response.request.resource_type in ["xhr", "fetch"]:
-        # Se è una chiamata API di Esselunga, rubiamo il JSON
         if "esselunga" in response.url.lower():
             try:
                 dati = await response.json()
@@ -60,11 +55,17 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO MOTORE API ESSELUNGA (Bypass Interfaccia Visiva) 🚀")
+    print("🚀 AVVIO MOTORE IBRIDO (Protezione Proxy Attiva) 🚀")
     async with async_playwright() as p:
-        # Usiamo parametri avanzati per nascondere che siamo un robot su GitHub
+        
+        # AGGIUNTA DELLA MASCHERA PROXY PER SUPERARE IL BLOCCO DI ESSELUNGA
         browser = await p.chromium.launch(
             headless=True,
+            proxy={
+                "server": "http://proxy-server.scraperapi.com:8001",
+                "username": "scraperapi",
+                "password": SCRAPER_API_KEY
+            },
             args=[
                 "--disable-blink-features=AutomationControlled",
                 "--no-sandbox",
@@ -72,6 +73,7 @@ async def run_scraper():
             ]
         )
         context = await browser.new_context(
+            ignore_https_errors=True,
             viewport={"width": 1366, "height": 768},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
@@ -79,9 +81,9 @@ async def run_scraper():
         page.on("response", cattura_traffico)
 
         try:
-            print("📍 Inizializzazione Sessione e Bypass CAP...")
-            await page.goto("https://spesaonline.esselunga.it/", timeout=60000)
-            await asyncio.sleep(3)
+            print("📍 Inizializzazione Sessione...")
+            await page.goto("https://spesaonline.esselunga.it/", timeout=90000)
+            await asyncio.sleep(4)
             try:
                 await page.locator("text=/Accetta/i").locator("visible=true").first.click(timeout=3000)
             except:
@@ -132,14 +134,14 @@ async def run_scraper():
                     pass
                 await asyncio.sleep(4) 
         except Exception as e:
-            print(f"⚠️ Bypass UI Indirizzo fallito (Possibile blocco IP temporaneo): {e}")
+            print(f"⚠️ Bypass UI Indirizzo fallito: {e}")
 
         # ---- FASE 1: I VOLANTINI DIGITALI ----
         print("📖 FASE 1: Estrazione Volantini")
         stato_scraper["current_fonte"] = "volantino"
         try:
-            await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=60000)
-            await asyncio.sleep(3)
+            await page.goto("https://www.esselunga.it/it-it/promozioni/volantini.html", timeout=90000)
+            await asyncio.sleep(4)
             urls_volantini = await page.evaluate('''() => {
                 return Array.from(document.querySelectorAll('a')).map(a => a.href).filter(href => href.includes('volantino-digitale'));
             }''')
@@ -155,8 +157,7 @@ async def run_scraper():
                 print(f"-> Sfoglio Rapido API: {nome_estratto}")
                 
                 try:
-                    await page.goto(url, timeout=45000)
-                    # Iniezione JS per forzare la richiesta API delle pagine successive senza cliccare il mouse
+                    await page.goto(url, timeout=60000)
                     await page.evaluate("""
                         async () => {
                             for(let i=0; i<30; i++) {
@@ -191,10 +192,9 @@ async def run_scraper():
             stato_scraper["current_volantino"] = nome_vol
             print(f"-> Forzatura chiamate API per: {nome_vol}")
             try:
-                await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(3) 
+                await page.goto(rep_url, timeout=90000)
+                await asyncio.sleep(4) 
                 
-                # Iniezione JavaScript: Chiamiamo le API interne del sito forzando i click senza usare il mouse fisico
                 await page.evaluate("""
                     async () => {
                         for(let i=0; i<25; i++) {
@@ -213,7 +213,7 @@ async def run_scraper():
         
         await browser.close()
 
-    # ---- ELABORAZIONE FINALE DEI DATI ----
+    # ---- ELABORAZIONE FINALE E CARICAMENTO SU SUPABASE ----
     prodotti_finali = []
     nomi_inseriti = set()
     
@@ -253,11 +253,9 @@ async def run_scraper():
                     img_url = v
                     break
 
-            # FIX TESSERA DEFINITIVO (Ricerca Esplicita nel JSON crudo dell'API)
             parole_tessera = ['fidaty', 'fìdaty', 'fidelity', 'tessera', 'carta', 'soci', 'sconto cassa']
             req_tessera = any(parola in raw_str for parola in parole_tessera)
             
-            # FIX NOME VOLANTINO (Impostato forzatamente in cima)
             fonte_originale = raw.get('custom_fonte', 'volantino')
             nome_vol_finale = raw.get('custom_volantino_nome', '')
             if not nome_vol_finale or nome_vol_finale == "":
@@ -280,7 +278,6 @@ async def run_scraper():
                 "volantino_nome": str(nome_vol_finale)
             })
 
-    # ---- INVIO DIRETTO A SUPABASE ----
     print(f"🌐 Inizio invio di {len(prodotti_finali)} prodotti a Supabase...")
     
     headers = {
@@ -290,7 +287,6 @@ async def run_scraper():
         "Prefer": "resolution=merge-duplicates"
     }
 
-    # Pulizia Database Cloud
     try:
         url_delete = f"{SUPABASE_URL}/rest/v1/prodotti?id=not.is.null"
         req_del = urllib.request.Request(url_delete, headers=headers, method='DELETE')
@@ -299,7 +295,6 @@ async def run_scraper():
     except Exception as e:
         pass
 
-    # Caricamento Nuovi Dati
     chunk_size = 500
     for i in range(0, len(prodotti_finali), chunk_size):
         chunk = prodotti_finali[i:i+chunk_size]

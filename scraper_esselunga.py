@@ -15,8 +15,7 @@ SUPABASE_URL = "https://sqxadjjbodjwozbqcqmk.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxeGFkampib2Rqd296YnFjcW1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2MjEyMzcsImV4cCI6MjEwMDE5NzIzN30.eL2xjp4S67j1IxWsl8NPi05-YYJz8SNPls0NlNcNgj4"
 # =======================================================
 
-prodotti_catturati_raw = []
-visti_json = set()
+prodotti_dict = {}
 stato_scraper = {"current_fonte": "volantino", "current_volantino": ""}
 
 def esplora_json_ricorsivo(dato):
@@ -26,14 +25,18 @@ def esplora_json_ricorsivo(dato):
         ha_prezzo = 'price' in chiavi or 'prezzo' in chiavi or 'currentprice' in chiavi or 'discountedprice' in chiavi
         
         if ha_nome and ha_prezzo:
-            firma = str(chiavi.get('name', '')) + str(chiavi.get('price', ''))
-            if firma not in visti_json:
-                visti_json.add(firma)
-                
-                # Inserimento esplicito dei campi
+            firma = str(chiavi.get('name', '')) + "_" + str(chiavi.get('price', ''))
+            
+            # Se è la prima volta che lo vediamo, lo salviamo
+            if firma not in prodotti_dict:
                 dato['custom_fonte'] = stato_scraper["current_fonte"]
                 dato['custom_volantino_nome'] = stato_scraper["current_volantino"]
-                prodotti_catturati_raw.append(dato)
+                prodotti_dict[firma] = dato
+            else:
+                # Se lo avevamo già visto in Home (senza nome), e ora lo rivediamo in una categoria, LO AGGIORNIAMO!
+                if stato_scraper["current_volantino"] not in ["", "OFFERTE GENERALI", "OFFERTE MISTE"]:
+                    prodotti_dict[firma]['custom_volantino_nome'] = stato_scraper["current_volantino"]
+                    prodotti_dict[firma]['custom_fonte'] = stato_scraper["current_fonte"]
         
         for valore in dato.values():
             esplora_json_ricorsivo(valore)
@@ -51,7 +54,7 @@ async def cattura_traffico(response):
                 pass 
 
 async def run_scraper():
-    print("🚀 AVVIO SPIDER ESSELUNGA 🚀")
+    print("🚀 AVVIO SPIDER ESSELUNGA (Fix Memoria e Rilevamento) 🚀")
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
         context = await browser.new_context(viewport={"width": 1280, "height": 800})
@@ -82,11 +85,11 @@ async def run_scraper():
                 via_index = count - 1
                 
                 await inputs_visibili.nth(cap_index).click(force=True)
-                await page.keyboard.type(CAP_UTENTE, delay=150)
+                await page.keyboard.type(CAP_UTENTE, delay=100)
                 await asyncio.sleep(1)
 
                 await inputs_visibili.nth(via_index).click(force=True)
-                await page.keyboard.type(VIA_UTENTE, delay=150)
+                await page.keyboard.type(VIA_UTENTE, delay=100)
                 await asyncio.sleep(3) 
                 
                 await page.keyboard.press("Space")
@@ -152,7 +155,7 @@ async def run_scraper():
                 except:
                     pass
         except Exception as e:
-            print(f"⚠️ Nessun Volantino: {e}")
+            pass
 
         # ---- FASE 2: E-COMMERCE ----
         print("🛒 FASE 2: Catalogo E-commerce")
@@ -172,19 +175,20 @@ async def run_scraper():
         
         for rep_url, nome_vol in reparti:
             stato_scraper["current_volantino"] = nome_vol
-            
             try:
                 await page.goto(rep_url, timeout=45000)
-                await asyncio.sleep(6) 
+                await asyncio.sleep(5) 
                 
-                for _ in range(25): 
-                    await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
-                    await asyncio.sleep(3) 
+                # Simuliamo la tastiera per caricare i prodotti in basso
+                for _ in range(30): 
+                    await page.keyboard.press("PageDown")
+                    await page.keyboard.press("PageDown")
+                    await asyncio.sleep(1.5)
                     try:
                         btn = page.locator("button:has-text('Mostra altri'), button:has-text('Carica altro')").first
-                        if await btn.is_visible(timeout=2000):
+                        if await btn.is_visible(timeout=1000):
                             await btn.click(force=True)
-                            await asyncio.sleep(4)
+                            await asyncio.sleep(3)
                     except:
                         pass
             except:
@@ -194,9 +198,11 @@ async def run_scraper():
 
     # ---- CREAZIONE DATABASE PER SUPABASE ----
     prodotti_finali = []
-    nomi_inseriti = set()
+    
+    # Estraiamo i prodotti dal dizionario
+    lista_grezza = list(prodotti_dict.values())
 
-    for raw in prodotti_catturati_raw:
+    for raw in lista_grezza:
         chiavi = {k.lower(): v for k, v in raw.items()}
         
         nome = chiavi.get('name') or chiavi.get('nome') or chiavi.get('title') or chiavi.get('description')
@@ -214,46 +220,38 @@ async def run_scraper():
         except:
             continue
 
-        chiave_nome = str(nome).strip().lower()
+        raw_str = json.dumps(raw).lower()
+        date_match = re.search(r'dal (\d{2}/\d{2}/\d{4})\s*al\s*(\d{2}/\d{2}/\d{4})', raw_str)
+        data_inizio = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
+        data_fine = date_match.group(2) if date_match else "N/D"
 
-        if chiave_nome not in nomi_inseriti:
-            nomi_inseriti.add(chiave_nome)
-            
-            raw_str = json.dumps(raw).lower()
-            date_match = re.search(r'dal (\d{2}/\d{2}/\d{4})\s*al\s*(\d{2}/\d{2}/\d{4})', raw_str)
-            data_inizio = date_match.group(1) if date_match else datetime.now().strftime("%Y-%m-%d")
-            data_fine = date_match.group(2) if date_match else "N/D"
+        img_url = "https://via.placeholder.com/150"
+        for k, v in raw.items():
+            if isinstance(v, str) and 'http' in v and ('.png' in v.lower() or '.jpg' in v.lower() or '.jpeg' in v.lower()):
+                img_url = v
+                break
 
-            img_url = "https://via.placeholder.com/150"
-            for k, v in raw.items():
-                if isinstance(v, str) and 'http' in v and ('.png' in v.lower() or '.jpg' in v.lower() or '.jpeg' in v.lower()):
-                    img_url = v
-                    break
-
-            # FIX TESSERA DEFINITIVO
-            parole_tessera = ['fidaty', 'fìdaty', 'fidelity', 'tessera', 'carta', 'soci', 'sconto cassa']
-            req_tessera = any(parola in raw_str for parola in parole_tessera)
-            
-            # FIX NOME VOLANTINO DEFINITIVO
-            fonte_originale = raw.get('custom_fonte', 'volantino')
-            nome_vol_finale = raw.get('custom_volantino_nome')
-            if not nome_vol_finale:
-                nome_vol_finale = raw.get('promotionname', raw.get('catalogname', 'OFFERTE GENERALI'))
-            
-            prodotti_finali.append({
-                "id": str(uuid.uuid4())[:8],
-                "nome": str(nome)[:100],
-                "prezzo_scontato": f"{p_scontato:.2f}",
-                "prezzo_originale": f"{p_orig:.2f}" if p_orig else None,
-                "immagine_url": img_url,
-                "categoria": "Esselunga",
-                "data_inizio": data_inizio,
-                "data_fine": data_fine,
-                "richiede_tessera": req_tessera,
-                "dati_grezzi_completi": raw,
-                "fonte": fonte_originale,
-                "volantino_nome": str(nome_vol_finale)
-            })
+        # FIX TESSERA ESPLICITO PER IL DATABASE
+        parole_tessera = ['fidaty', 'fìdaty', 'fidelity', 'tessera', 'carta', 'soci', 'sconto cassa']
+        req_tessera = any(parola in raw_str for parola in parole_tessera)
+        
+        fonte_originale = raw.get('custom_fonte', 'volantino')
+        nome_vol_finale = raw.get('custom_volantino_nome', 'OFFERTE GENERALI')
+        
+        prodotti_finali.append({
+            "id": str(uuid.uuid4())[:8],
+            "nome": str(nome)[:100],
+            "prezzo_scontato": f"{p_scontato:.2f}",
+            "prezzo_originale": f"{p_orig:.2f}" if p_orig else None,
+            "immagine_url": img_url,
+            "categoria": "Esselunga",
+            "data_inizio": data_inizio,
+            "data_fine": data_fine,
+            "richiede_tessera": req_tessera,
+            "dati_grezzi_completi": raw,
+            "fonte": fonte_originale,
+            "volantino_nome": str(nome_vol_finale)
+        })
 
     # ---- INVIO A SUPABASE ----
     headers = {
